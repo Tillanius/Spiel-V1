@@ -17,6 +17,7 @@ public class Spieler extends Actor
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
     private final int sprunghöhe = 14; //Wie hoch der Spieler springen kann
     private int vSpeed = 0; //Aktuelle vertikale Geschwindigkeit des Spielers
+    private boolean up = false; // t -> telepotiert über den boden; f -> teleportiert nicht
     
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
     
@@ -149,6 +150,11 @@ public class Spieler extends Actor
     {
         if (onGround()) {
             vSpeed = 0;
+            while(onGround() && up)
+            {
+                setLocation (getX(), getY() - 1);
+            }
+            up = false;
         }
         else {
             fall();
@@ -162,6 +168,7 @@ public class Spieler extends Actor
             vSpeed = -sprunghöhe; //Negativ weil nach oben.
             fall();
             time = 28;
+            up = true;
         }
     }
     

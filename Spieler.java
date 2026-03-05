@@ -18,7 +18,7 @@ public class Spieler extends Actor
     private final int sprunghöhe = 14; //Wie hoch der Spieler springen kann
     private int vSpeed = 0; //Aktuelle vertikale Geschwindigkeit des Spielers
     
-    private int time = 1; //Zeitvariable für Sprungstopp zwischen den Sprüngen
+    private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
     
     //Countervariablen
     public Counter[] meineCounter = new Counter[3];

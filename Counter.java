@@ -39,7 +39,6 @@ public class Counter extends Actor
     public void add(int score){
         value = value + score;
         updateImage();
-        int i = 0;
     }
     
     private void updateImage() {

@@ -21,6 +21,11 @@ public class Button extends Actor
     {
         this.text = text; //weist Text dem Button zu
         createButton(normalColor); //Button der Farbe normalColor wird erstellt
+        
+        setImage("alligator.png");
+        GreenfootImage image = getImage();
+        image.scale(100,100);
+        setImage(image);
     }
     
     public void createButton(Color bgColor)

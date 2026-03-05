@@ -59,6 +59,8 @@ public class Spieler extends Actor
         muenzen = 0;
         nuesse = 0;
         
+        setImage("Knight_flipped.png");
+        
         meineCounter[0] = new Counter("Tode: ");
         meineCounter[1] = new Counter("Punkte: ");
         meineCounter[2] = new Counter("Zeit: ");
@@ -70,6 +72,7 @@ public class Spieler extends Actor
     {
         if(Greenfoot.isKeyDown("d") && vornFrei())
         {
+            setImage("Knight_flipped.png");
             move(speed);
         }
     }
@@ -78,6 +81,7 @@ public class Spieler extends Actor
     {
         if(Greenfoot.isKeyDown("a") && vornFrei())
         {
+            setImage("Knight.png");
             move(-speed);
         }
     }

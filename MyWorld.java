@@ -19,11 +19,11 @@ public class MyWorld extends World
         super(600, 400, 1); 
         setBackground("sky.png");
         
-        spieler = new Spieler(100, 100);
-        addObject(spieler, 100, 100);
-        for(int i=0; i<3; i++){
-            addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
-        }
+        // spieler = new Spieler(100, 100);
+        // addObject(spieler, 100, 100);
+        // for(int i=0; i<3; i++){
+            // addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
+        // }
         
         boden();
         

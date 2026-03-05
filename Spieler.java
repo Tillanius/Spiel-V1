@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Spieler extends Actor
+public class Spieler extends OberklasseSpieler
 {
     private int posX;
     private int posY;
@@ -17,7 +17,7 @@ public class Spieler extends Actor
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
     private final int sprunghöhe = 14; //Wie hoch der Spieler springen kann
     private int vSpeed = 0; //Aktuelle vertikale Geschwindigkeit des Spielers
-    private boolean up = false; // t -> telepotiert über den boden; f -> teleportiert nicht
+    private boolean up = true; // t -> telepotiert über den boden; f -> teleportiert nicht
     
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
     
@@ -130,7 +130,7 @@ public class Spieler extends Actor
     public boolean onGround()
     {
         //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
-        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 + 2, Bodencheck.class);
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3 , Bodencheck.class);
         return under != null;
     }
     
@@ -158,6 +158,10 @@ public class Spieler extends Actor
         }
         else {
             fall();
+            if(vSpeed > 2)
+            {
+                up = true;
+            }
         }
     }
     
@@ -170,13 +174,5 @@ public class Spieler extends Actor
             time = 28;
             up = true;
         }
-    }
-    
-    
-    
-    private boolean vornFrei()
-    {
-        return true;
-        //Damit man nicht gegen die Blöcke springen kann
     }
 }

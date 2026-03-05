@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private Spieler spieler;
+   
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -19,11 +20,11 @@ public class MyWorld extends World
         super(600, 400, 1); 
         setBackground("sky.png");
         
-        // spieler = new Spieler(100, 100);
-        // addObject(spieler, 100, 100);
-        // for(int i=0; i<3; i++){
-            // addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
-        // }
+        spieler = new Spieler(100, 100);
+        addObject(spieler, 100, 100);
+        for(int i=0; i<4; i++){
+            addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
+        }
         
         boden();
         
@@ -41,31 +42,4 @@ public class MyWorld extends World
             addObject(bodencheck, 32*i, 390);
         }
     }
-    
-    
-
-    /**
-
-     * Erstellt Plattformen für das Spiel welche modelierbar sind.
-
-     */
-
-    public void platform(int platformlange, int platformstart ,int plaformhoehe)
-
-    {
-
-     for(int dauer =platformstart;dauer < platformlange; dauer++ )
-
-     { 
-
-        Bodencheck bodencheck = new Bodencheck();
-            Boden boden =new Boden();
-
-        addObject(boden, 32*dauer, plaformhoehe);
-        addObject(bodencheck, 32*dauer, plaformhoehe);
-     }
-
-    }
- 
-    
 }

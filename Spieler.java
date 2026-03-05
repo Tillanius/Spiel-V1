@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Spieler extends OberklasseSpieler
+public class Spieler extends Actor
 {
     private int posX;
     private int posY;
@@ -17,12 +17,11 @@ public class Spieler extends OberklasseSpieler
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
     private final int sprunghöhe = 14; //Wie hoch der Spieler springen kann
     private int vSpeed = 0; //Aktuelle vertikale Geschwindigkeit des Spielers
-    private boolean up = true; // t -> telepotiert über den boden; f -> teleportiert nicht
     
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
     
     //Countervariablen
-    public Counter[] meineCounter = new Counter[3];
+    public Counter[] meineCounter = new Counter[4];
     int zeit = 0; //Im Level verbrachte Zeit
     /**
      * Act - do whatever the Spieler wants to do. This method is called whenever
@@ -33,6 +32,7 @@ public class Spieler extends OberklasseSpieler
         linksLaufen();
         rechtsLaufen();
         springen();
+        sammeln();
         
         //schwerkraft
         checkFall();
@@ -46,7 +46,7 @@ public class Spieler extends OberklasseSpieler
         //Im Level verbachte Zeit wird sauber und schön angezeigt
         zeit++;
         if(zeit >= 60){
-            realisiereCounter(2); //Counter mit Index 2 ist die Zeit.
+            realisiereCounter(3); //Counter mit Index 2 ist die Zeit.
             zeit=0;
         }
     }
@@ -64,9 +64,9 @@ public class Spieler extends OberklasseSpieler
         
         meineCounter[0] = new Counter("Tode: ");
         meineCounter[1] = new Counter("Punkte: ");
-        meineCounter[2] = new Counter("Zeit: ");
+        meineCounter[2] = new Counter("Nüsse: ");
+        meineCounter[3] = new Counter("Zeit: ");
     }
-    
     
     
     private void linksLaufen()
@@ -104,9 +104,14 @@ public class Spieler extends OberklasseSpieler
         muenzen++;
     }
     
-    private void sammeln(Nuss nuss)
+    private void sammeln()
     {
-        nuesse++;
+        Actor nuss = getOneIntersectingObject(Nuss.class);
+        if(nuss != null)
+        {
+            getWorld().removeObject(nuss);
+            realisiereCounter(2);
+        }
     }
     
     
@@ -130,7 +135,7 @@ public class Spieler extends OberklasseSpieler
     public boolean onGround()
     {
         //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
-        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3 , Bodencheck.class);
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 + 2, Bodencheck.class);
         return under != null;
     }
     
@@ -150,18 +155,9 @@ public class Spieler extends OberklasseSpieler
     {
         if (onGround()) {
             vSpeed = 0;
-            while(onGround() && up)
-            {
-                setLocation (getX(), getY() - 1);
-            }
-            up = false;
         }
         else {
             fall();
-            if(vSpeed > 2)
-            {
-                up = true;
-            }
         }
     }
     
@@ -172,7 +168,12 @@ public class Spieler extends OberklasseSpieler
             vSpeed = -sprunghöhe; //Negativ weil nach oben.
             fall();
             time = 28;
-            up = true;
         }
+    }
+    
+    private boolean vornFrei()
+    {
+        return true;
+        //Damit man nicht gegen die Blöcke springen kann
     }
 }

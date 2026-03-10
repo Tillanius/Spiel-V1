@@ -18,7 +18,7 @@ public class MenueWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); //Erstellt Feld mit genannten Größen
         setBackgroundColor(); //Weist Feld Hintergrund zu
-        this.addObject(new Button(1), 300, 250); //Neuer Button Start an Stelle 100, 220
+        this.addObject(new Button("START"), 300, 250); //Neuer Button Start an Stelle 100, 220
        
     }
     

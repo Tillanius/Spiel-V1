@@ -27,7 +27,7 @@ public class MyWorld extends World
         
         boden();
         
-        Button button = new Button(2);
+        Button button = new Button("Start");
         addObject(button, 300, 200);
     }
     

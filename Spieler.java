@@ -23,9 +23,6 @@ public class Spieler extends Actor
     //Countervariablen
     public Counter[] meineCounter = new Counter[4];
     int zeit = 0; //Im Level verbrachte Zeit
-    
-    private boolean checkFall = true;
-    
     /**
      * Act - do whatever the Spieler wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -138,7 +135,7 @@ public class Spieler extends Actor
     public boolean onGround()
     {
         //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
-        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Bodencheck.class);
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 + 2, Bodencheck.class);
         return under != null;
     }
     
@@ -158,11 +155,6 @@ public class Spieler extends Actor
     {
         if (onGround()) {
             vSpeed = 0;
-            while(onGround() && checkFall)
-            {
-                setLocation(getX(), getY()-1);
-            }
-            checkFall = false;
         }
         else {
             fall();
@@ -176,7 +168,6 @@ public class Spieler extends Actor
             vSpeed = -sprunghöhe; //Negativ weil nach oben.
             fall();
             time = 28;
-            checkFall = true;
         }
     }
     

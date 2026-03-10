@@ -17,9 +17,9 @@ public class Level extends World
     public Level(int level)
     {
         super(600, 400, 1);
-        
+
         setBackground("sky.png");
-        
+
         spieler = new Spieler(100, 100);
         addObject(spieler, 100, 100);
         for(int i=0; i<4; i++){
@@ -28,7 +28,7 @@ public class Level extends World
         nuss = new Nuss(350,350);
         addObject(nuss, 350, 350);
         boden();
-        
+
         if(level == 1)
         {
             lvl1();
@@ -37,6 +37,7 @@ public class Level extends World
         {
             lvl2();
         }
+        prepare();
     }
 
     private void boden()
@@ -49,22 +50,22 @@ public class Level extends World
             addObject(bodencheck, 32*i, 390);
         }
     }
-    
+
     private void lvl1()
     {
         Bodencheck bodencheck = new Bodencheck();
         Boden boden =new Boden();
         addObject(boden, 200, 300);
         addObject(bodencheck,200, 300);
-        
+
         this.addObject(new Button("LEVEL2"), 300, 250);
     }
-    
+
     private void lvl2()
     {
-        
+
     }
-    
+
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.
 
      */
@@ -73,17 +74,27 @@ public class Level extends World
 
     {
 
-     for(int dauer =platformstart;dauer < platformlange; dauer++ )
+        for(int dauer =platformstart;dauer < platformlange; dauer++ )
 
-     { 
+        { 
 
-        Bodencheck bodencheck = new Bodencheck();
+            Bodencheck bodencheck = new Bodencheck();
             Boden boden =new Boden();
 
-        addObject(boden, 32*dauer, plaformhoehe);
-        addObject(bodencheck, 32*dauer, plaformhoehe);
-     }
+            addObject(boden, 32*dauer, plaformhoehe);
+            addObject(bodencheck, 32*dauer, plaformhoehe);
+        }
 
     }
-    
+
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        platform(2, 3, 333);
+        platform(4, 4, 100);
+        platform(4, 44, 200);
+    }
 }

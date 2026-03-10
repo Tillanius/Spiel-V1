@@ -14,9 +14,6 @@ public class Hindernis extends Weltblöcke
      */
     public void act()
     {
-        setImage("Bild.png");
-        GreenfootImage image = getImage();
-        image.scale(100,100);
-        
+        // Add your action code here.
     }
 }

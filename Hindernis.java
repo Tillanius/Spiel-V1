@@ -16,4 +16,9 @@ public class Hindernis extends Weltblöcke
     {
         // Add your action code here.
     }
+    
+    public Hindernis()
+    {
+        setImage("Hindernis.png");
+    }
 }

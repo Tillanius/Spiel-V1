@@ -163,7 +163,7 @@ public class Spieler extends Actor
     
     private void springen()
     {
-        if(Greenfoot.isKeyDown("w") && onGround() && time == 0)
+        if(Greenfoot.isKeyDown("w") && time == 0)
         {
             vSpeed = -sprunghöhe; //Negativ weil nach oben.
             fall();

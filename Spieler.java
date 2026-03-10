@@ -12,7 +12,12 @@ public class Spieler extends Actor
     private int posY;
     public int nuesse;
     public int muenzen;
-
+    
+    private int waitTime = 30;
+    private int coolDownCounter = waitTime;
+    private boolean doCoolDown;
+    
+    private final int dashSpeed = 20;
     private final int speed = 6; //Laufgeschwindigkeit
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
     private final int sprunghöhe = 14; //Wie hoch der Spieler springen kann
@@ -33,6 +38,10 @@ public class Spieler extends Actor
         rechtsLaufen();
         springen();
         sammeln();
+        linksDash();
+        rechtsDash();
+        coolDown();
+        
         
         //schwerkraft
         checkFall();
@@ -78,6 +87,16 @@ public class Spieler extends Actor
         }
     }
     
+     private void linksDash()
+    {
+        if(Greenfoot.isKeyDown("f") && vornFrei() && coolDown() == true)
+        {
+            setImage("Knight_flipped.png");
+            move(dashSpeed);
+            doCoolDown = true;
+        }
+    }
+    
     private void rechtsLaufen()
     {
         if(Greenfoot.isKeyDown("a") && vornFrei())
@@ -87,6 +106,35 @@ public class Spieler extends Actor
         }
     }
     
+    private void rechtsDash()
+    {
+        if(Greenfoot.isKeyDown("y") && vornFrei() && coolDown() == true)
+        {
+            setImage("Knight.png");
+            move(-dashSpeed);
+
+            doCoolDown = true;
+        }
+    }
+    
+    public boolean coolDown()
+    {
+        boolean coolDownDone = true;
+        if(doCoolDown == true)
+        {
+            coolDownDone = false;
+            coolDownCounter--;
+            if(coolDownCounter <= 0){
+                doCoolDown = false;
+            }
+        }
+        else {
+            coolDownDone = true;
+            coolDownCounter = waitTime;
+        }
+        
+        return coolDownDone;
+    }
     
     
     public Counter getCounter(int i){

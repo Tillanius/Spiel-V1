@@ -21,5 +21,6 @@ public class Bodencheck extends Boden
     {
         super();
         setImage("Bodencheck.png");
+        //setImage("");
     }
 }

@@ -14,12 +14,10 @@ public class Button extends Actor
     private Color secondColor = new Color(228,159,23);
     //private Color secondColor = new Color(107,82,16);
     
-    private int ausgewaehltesLevel;
-    
     /**
      * Constructor for objects of class Button
      */
-    public Button(int level)
+    public Button(String text)
     {
         this.text = text; //weist Text dem Button zu
         createButton(normalColor); //Button der Farbe normalColor wird erstellt
@@ -28,8 +26,6 @@ public class Button extends Actor
         GreenfootImage image = getImage();
         image.scale(100,100);
         setImage(image);
-        
-        ausgewaehltesLevel = level;
     }
     
     public void createButton(Color bgColor)
@@ -42,14 +38,17 @@ public class Button extends Actor
     {
         if(Greenfoot.mouseClicked(this))
         {
-            if(ausgewaehltesLevel == 1)
+            if(text == "START")
             {
                 Greenfoot.setWorld(new Level(1));
             }
-            else if(ausgewaehltesLevel == 2)
+            else if(text == "LEVEL2")
             {
                 Greenfoot.setWorld(new Level(2));
             }
         }
     }
+   
+
+    
 }

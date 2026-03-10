@@ -14,7 +14,7 @@ public class Level extends World
     /**
      * Constructor for objects of class Level
      */
-    public Level(int lvl)
+    public Level(int level)
     {
         super(600, 400, 1);
         
@@ -29,11 +29,11 @@ public class Level extends World
         addObject(nuss, 350, 350);
         boden();
         
-        if(lvl == 1)
+        if(level == 1)
         {
             lvl1();
         }
-        else if(lvl == 2)
+        else if(level == 2)
         {
             lvl2();
         }
@@ -56,10 +56,34 @@ public class Level extends World
         Boden boden =new Boden();
         addObject(boden, 200, 300);
         addObject(bodencheck,200, 300);
+        
+        this.addObject(new Button("LEVEL2"), 300, 250);
     }
     
     private void lvl2()
     {
         
     }
+    
+    /* Erstellt Plattformen für das Spiel welche modelierbar sind.
+
+     */
+
+    public void platform(int platformlange, int platformstart ,int plaformhoehe)
+
+    {
+
+     for(int dauer =platformstart;dauer < platformlange; dauer++ )
+
+     { 
+
+        Bodencheck bodencheck = new Bodencheck();
+            Boden boden =new Boden();
+
+        addObject(boden, 32*dauer, plaformhoehe);
+        addObject(bodencheck, 32*dauer, plaformhoehe);
+     }
+
+    }
+    
 }

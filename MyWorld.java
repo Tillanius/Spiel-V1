@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     private Spieler spieler;
-   
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -20,15 +19,15 @@ public class MyWorld extends World
         super(600, 400, 1); 
         setBackground("sky.png");
         
-        spieler = new Spieler(100, 100);
-        addObject(spieler, 100, 100);
-        for(int i=0; i<4; i++){
-            addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
-        }
+        // spieler = new Spieler(100, 100);
+        // addObject(spieler, 100, 100);
+        // for(int i=0; i<3; i++){
+            // addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
+        // }
         
         boden();
         
-        Button button = new Button(2);
+        Button button = new Button("Start");
         addObject(button, 300, 200);
     }
     
@@ -42,4 +41,5 @@ public class MyWorld extends World
             addObject(bodencheck, 32*i, 390);
         }
     }
+    
 }

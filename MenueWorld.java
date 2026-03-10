@@ -18,7 +18,7 @@ public class MenueWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); //Erstellt Feld mit genannten Größen
         setBackgroundColor(); //Weist Feld Hintergrund zu
-        this.addObject(new Button(1), 300, 250); //Neuer Button Start an Stelle 100, 220
+        this.addObject(new Button("START"), 300, 250); //Neuer Button Start an Stelle 100, 220
        
     }
     
@@ -31,5 +31,28 @@ public class MenueWorld extends World
         img.setColor(new Color(78,181,78)); //Schriftfarbe
         img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
         img.drawString("MENÜ", 210,120); //Menüüberschrift wird erstellt
+    }
+    
+    /**
+
+     * Erstellt Plattformen für das Spiel welche modelierbar sind.
+
+     */
+
+    public void platform(int platformlange, int platformstart ,int plaformhoehe)
+
+    {
+
+     for(int dauer =platformstart;dauer < platformlange; dauer++ )
+
+     { 
+
+        Bodencheck bodencheck = new Bodencheck();
+            Boden boden =new Boden();
+
+        addObject(boden, 32*dauer, plaformhoehe);
+        addObject(bodencheck, 32*dauer, plaformhoehe);
+     }
+
     }
 }

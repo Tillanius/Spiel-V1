@@ -10,7 +10,7 @@ public class Level extends World
     // instance variables - replace the example below with your own
     private int x;
     private Spieler spieler;
-
+    private Nuss nuss;
     /**
      * Constructor for objects of class Level
      */
@@ -22,10 +22,11 @@ public class Level extends World
         
         spieler = new Spieler(100, 100);
         addObject(spieler, 100, 100);
-        for(int i=0; i<3; i++){
+        for(int i=0; i<4; i++){
             addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
         }
-        
+        nuss = new Nuss(350,350);
+        addObject(nuss, 350, 350);
         boden();
         
         lvl1();

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Spieler extends Actor
+public class Spieler extends OberklasseSpieler
 {
     private int posX;
     private int posY;
@@ -231,11 +231,5 @@ public class Spieler extends Actor
             time = 28;
             checkFall = true;
         }
-    }
-    
-    private boolean vornFrei()
-    {
-        return true;
-        //Damit man nicht gegen die Blöcke springen kann
     }
 }

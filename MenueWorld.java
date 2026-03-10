@@ -19,7 +19,6 @@ public class MenueWorld extends World
         super(600, 400, 1); //Erstellt Feld mit genannten Größen
         setBackgroundColor(); //Weist Feld Hintergrund zu
         this.addObject(new Button("START"), 300, 250); //Neuer Button Start an Stelle 100, 220
-       
     }
     
     private void setBackgroundColor()

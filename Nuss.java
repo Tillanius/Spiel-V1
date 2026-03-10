@@ -10,11 +10,15 @@ public class Nuss extends Sammelitems
 {
     private int posX;
     private int posY;
+    
+    private int nussbild;
+    
     public Nuss(int posX, int posY)
     {
         this.posX = posX;
         this.posY = posY;        
-        //setImage("Nussbild");
+        setImage("MrNut1.png");
+        nussbild = 1;
     }
     
     /**
@@ -23,6 +27,20 @@ public class Nuss extends Sammelitems
      */
     public void act()
     {
-        // Add your action code here.
+        //change Grafik
+        nextImage();
+    }
+    
+    public void nextImage()
+    {
+        setImage("MrNut"+nussbild+".png");
+        if(nussbild<13)
+        {
+            nussbild++;
+        }
+        else
+        {
+            nussbild = 1;
+        }
     }
 }

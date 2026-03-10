@@ -32,4 +32,27 @@ public class MenueWorld extends World
         img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
         img.drawString("MENÜ", 210,120); //Menüüberschrift wird erstellt
     }
+    
+    /**
+
+     * Erstellt Plattformen für das Spiel welche modelierbar sind.
+
+     */
+
+    public void platform(int platformlange, int platformstart ,int plaformhoehe)
+
+    {
+
+     for(int dauer =platformstart;dauer < platformlange; dauer++ )
+
+     { 
+
+        Bodencheck bodencheck = new Bodencheck();
+            Boden boden =new Boden();
+
+        addObject(boden, 32*dauer, plaformhoehe);
+        addObject(bodencheck, 32*dauer, plaformhoehe);
+     }
+
+    }
 }

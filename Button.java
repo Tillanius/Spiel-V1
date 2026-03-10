@@ -38,7 +38,14 @@ public class Button extends Actor
     {
         if(Greenfoot.mouseClicked(this))
         {
-            Greenfoot.setWorld(new Level());
+            if(text == "START")
+            {
+                Greenfoot.setWorld(new Level(1));
+            }
+            else if(text == "LEVEL2")
+            {
+                Greenfoot.setWorld(new Level(2));
+            }
         }
     }
    

@@ -14,7 +14,7 @@ public class Level extends World
     /**
      * Constructor for objects of class Level
      */
-    public Level()
+    public Level(int lvl)
     {
         super(600, 400, 1);
         
@@ -29,7 +29,14 @@ public class Level extends World
         addObject(nuss, 350, 350);
         boden();
         
-        lvl1();
+        if(lvl == 1)
+        {
+            lvl1();
+        }
+        else if(lvl == 2)
+        {
+            lvl2();
+        }
     }
 
     private void boden()
@@ -49,5 +56,10 @@ public class Level extends World
         Boden boden =new Boden();
         addObject(boden, 200, 300);
         addObject(bodencheck,200, 300);
+    }
+    
+    private void lvl2()
+    {
+        
     }
 }

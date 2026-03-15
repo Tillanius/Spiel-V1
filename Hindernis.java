@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Hindernis extends Weltblöcke
+public class Hindernis extends Boden
 {
     /**
      * Act - do whatever the Hindernis wants to do. This method is called whenever
@@ -19,6 +19,8 @@ public class Hindernis extends Weltblöcke
     
     public Hindernis()
     {
+        super();
         setImage("Hindernis.png");
+        //setImage("");
     }
 }

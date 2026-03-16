@@ -17,11 +17,11 @@ public class Spieler extends OberklasseSpieler
     private int coolDownCounter = waitTime;
     private boolean doCoolDown;
 
-    private final int dashSpeed = 20;
+    private final int dashSpeed = 2;
 
     private final int speed = 6; //Laufgeschwindigkeit
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
-    private final int sprunghöhe = 14; //Wie hoch der Spieler springen kann
+    private final int sprunghöhe = 10; //Wie hoch der Spieler springen kann
     private int vSpeed = 0; //Aktuelle vertikale Geschwindigkeit des Spielers
 
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
@@ -44,6 +44,7 @@ public class Spieler extends OberklasseSpieler
 
         //Dash
         linksDash();
+        //linksDash2();
         rechtsDash();
         coolDown();
 
@@ -87,25 +88,6 @@ public class Spieler extends OberklasseSpieler
 
     private void linksLaufen()
     {
-        if(Greenfoot.isKeyDown("d") && vornFrei())
-        {
-            setImage("Knight_flipped.png");
-            move(speed);
-        }
-    }
-
-    private void linksDash()
-    {
-        if(Greenfoot.isKeyDown("f") && vornFrei() && coolDown() == true)
-        {
-            setImage("Knight_flipped.png");
-            move(dashSpeed);
-            doCoolDown = true;
-        }
-    }
-
-    private void rechtsLaufen()
-    {
         if(Greenfoot.isKeyDown("a") && vornFrei())
         {
             setImage("Knight.png");
@@ -113,14 +95,36 @@ public class Spieler extends OberklasseSpieler
         }
     }
 
-    private void rechtsDash()
+    private void linksDash()
     {
-        if(Greenfoot.isKeyDown("y") && vornFrei() && coolDown() == true)
+        if(Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
         {
             setImage("Knight.png");
-            move(-dashSpeed);
+            for(int i=0; i<5; i++){
+                move(-dashSpeed);
+                doCoolDown = true;
+            }
+        }
+    }
+    
+    private void rechtsLaufen()
+    {
+        if(Greenfoot.isKeyDown("d") && vornFrei())
+        {
+            setImage("Knight_flipped.png");
+            move(speed);
+        }
+    }
 
-            doCoolDown = true;
+    private void rechtsDash()
+    {
+        if(Greenfoot.isKeyDown("d") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
+        {
+            setImage("Knight_flipped.png");
+            for(int i=0; i<5; i++){
+                move(dashSpeed);
+                doCoolDown = true;
+            }
         }
     }
 

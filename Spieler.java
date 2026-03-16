@@ -92,6 +92,7 @@ public class Spieler extends OberklasseSpieler
         {
             setImage("Knight.png");
             move(-speed);
+            sterben();
         }
     }
 
@@ -105,6 +106,7 @@ public class Spieler extends OberklasseSpieler
                 doCoolDown = true;
             }
         }
+        sterben();
     }
     
     private void rechtsLaufen()
@@ -113,6 +115,7 @@ public class Spieler extends OberklasseSpieler
         {
             setImage("Knight_flipped.png");
             move(speed);
+            sterben();
         }
     }
 
@@ -125,6 +128,7 @@ public class Spieler extends OberklasseSpieler
                 move(dashSpeed);
                 doCoolDown = true;
             }
+            sterben();
         }
     }
 
@@ -173,7 +177,11 @@ public class Spieler extends OberklasseSpieler
     
     private void sterben()
     {
-        //open death menue
+        if (onTrap() || headHitsTrap()) 
+        {
+            realisiereCounter(0);
+            setLocation(posX, posY);
+        }
     }
 
     private boolean amZiel()
@@ -196,10 +204,17 @@ public class Spieler extends OberklasseSpieler
     public boolean headHitsGround()
     {
         //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
-        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 - 3, Bodencheck.class);
+        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +3, Bodencheck.class);
         return above != null;
     }
 
+    public boolean headHitsTrap()
+    {
+        //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
+        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +3, Hindernis.class);
+        return above != null;
+    }
+    
     /**
      *  Überprüft ob der Spieler eine Falle berührt
      */
@@ -216,6 +231,7 @@ public class Spieler extends OberklasseSpieler
     public void fall()
     {
         setLocation (getX(), getY() + vSpeed);
+        sterben();
         vSpeed += acceleration;
     }
 
@@ -247,7 +263,8 @@ public class Spieler extends OberklasseSpieler
     {
         if(Greenfoot.isKeyDown("w") && onGround() && time == 0 && !headHitsGround())
         {
-            vSpeed = -sprunghöhe; //Negativ weil nach oben
+            vSpeed = -sprunghöhe;
+            sterben();
             fall();
             time = 28;
             checkFall = true;

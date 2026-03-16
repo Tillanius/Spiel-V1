@@ -68,7 +68,7 @@ public class Level extends World
         Boden boden2 =new Boden();
         addObject(boden2, 400, 300);
         
-        Hindernis hindernis = new Hindernis();
+        Hindernis hindernis = new Hindernis(1);
         addObject(hindernis,400, 280);
         
         this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);

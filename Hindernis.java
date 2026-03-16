@@ -17,10 +17,17 @@ public class Hindernis extends Boden
         // Add your action code here.
     }
     
-    public Hindernis()
+    public Hindernis(int richtung)
     {
         super();
-        setImage("Hindernis.png");
+        if(richtung == 1)
+        {
+            setImage("spikescon.png");
+        }
+        else
+        {
+            setImage("HindernisUpDown.png");
+        }
         //setImage("");
     }
 }

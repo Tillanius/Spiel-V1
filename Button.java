@@ -17,12 +17,12 @@ public class Button extends Actor
     /**
      * Constructor for objects of class Button
      */
-    public Button(String text)
+    public Button(String text, String Image)
     {
         this.text = text; //weist Text dem Button zu
         createButton(normalColor); //Button der Farbe normalColor wird erstellt
         
-        setImage("alligator.png");
+        setImage(Image+".png");
         GreenfootImage image = getImage();
         image.scale(100,100);
         setImage(image);

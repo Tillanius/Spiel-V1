@@ -22,7 +22,7 @@ public class Hindernis extends Boden
         super();
         if(richtung == 1)
         {
-            setImage("spikescon.png");
+            setImage("spikes.png");
         }
         else
         {

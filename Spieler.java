@@ -16,20 +16,20 @@ public class Spieler extends OberklasseSpieler
     private int waitTime = 30;
     private int coolDownCounter = waitTime;
     private boolean doCoolDown;
-    
-    private final int dashSpeed = 20;
-    
+
+    private final int dashSpeed = 2;
+
     private final int speed = 6; //Laufgeschwindigkeit
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
-    private final int sprunghöhe = 14; //Wie hoch der Spieler springen kann
+    private final int sprunghöhe = 10; //Wie hoch der Spieler springen kann
     private int vSpeed = 0; //Aktuelle vertikale Geschwindigkeit des Spielers
-    
+
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
-    
+
     //Countervariablen
     public Counter[] meineCounter = new Counter[4];
     int zeit = 0; //Im Level verbrachte Zeit
-    
+
     private boolean checkFall = true;
     /**
      * Act - do whatever the Spieler wants to do. This method is called whenever
@@ -41,29 +41,29 @@ public class Spieler extends OberklasseSpieler
         rechtsLaufen();
         springen();
         sammeln();
-        
+
         //Dash
         linksDash();
+        //linksDash2();
         rechtsDash();
         coolDown();
-        
+
         //schwerkraft
         checkFall();
-        
+
         //Zeit zwischen den Sprüngen vergeht, damit keine Fehler entstehen
         if (time > 0)
         {
             time--;
         }
-        
+
         //Im Level verbachte Zeit wird sauber und schön angezeigt
         zeit++;
         if(zeit >= 60){
             realisiereCounter(3); //Counter mit Index 2 ist die Zeit.
             zeit=0;
         }
-        
-        
+
         if(vSpeed > 2)
         {
             checkFall = true;
@@ -71,43 +71,22 @@ public class Spieler extends OberklasseSpieler
     }
 
     
-    
     public Spieler(int posX, int posY)
     {
         this.posX = posX;
         this.posY = posY;
         muenzen = 0;
         nuesse = 0;
-        
+
         setImage("Knight_flipped.png");
-        
+
         meineCounter[0] = new Counter("Tode: ");
         meineCounter[1] = new Counter("Punkte: ");
         meineCounter[2] = new Counter("Nüsse: ");
         meineCounter[3] = new Counter("Zeit: ");
     }
-    
-    
+
     private void linksLaufen()
-    {
-        if(Greenfoot.isKeyDown("d") && vornFrei())
-        {
-            setImage("Knight_flipped.png");
-            move(speed);
-        }
-    }
-    
-    private void linksDash()
-    {
-        if(Greenfoot.isKeyDown("f") && vornFrei() && coolDown() == true)
-        {
-            setImage("Knight_flipped.png");
-            move(dashSpeed);
-            doCoolDown = true;
-        }
-    }
-    
-    private void rechtsLaufen()
     {
         if(Greenfoot.isKeyDown("a") && vornFrei())
         {
@@ -115,18 +94,40 @@ public class Spieler extends OberklasseSpieler
             move(-speed);
         }
     }
-    
-    private void rechtsDash()
+
+    private void linksDash()
     {
-        if(Greenfoot.isKeyDown("y") && vornFrei() && coolDown() == true)
+        if(Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
         {
             setImage("Knight.png");
-            move(-dashSpeed);
- 
-            doCoolDown = true;
+            for(int i=0; i<5; i++){
+                move(-dashSpeed);
+                doCoolDown = true;
+            }
         }
     }
     
+    private void rechtsLaufen()
+    {
+        if(Greenfoot.isKeyDown("d") && vornFrei())
+        {
+            setImage("Knight_flipped.png");
+            move(speed);
+        }
+    }
+
+    private void rechtsDash()
+    {
+        if(Greenfoot.isKeyDown("d") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
+        {
+            setImage("Knight_flipped.png");
+            for(int i=0; i<5; i++){
+                move(dashSpeed);
+                doCoolDown = true;
+            }
+        }
+    }
+
     public boolean coolDown()
     {
         boolean coolDownDone = true;
@@ -144,22 +145,21 @@ public class Spieler extends OberklasseSpieler
         }
         return coolDownDone;
     }
-    
+
     public Counter getCounter(int i){
         return meineCounter[i];
     }
-    
+
     private void realisiereCounter(int n){
         meineCounter[n].add(1);
     }
-    
-    
+
     
     private void sammeln(Muenze muenze)
     {
         muenzen++;
     }
-    
+
     private void sammeln()
     {
         Actor nuss = getOneIntersectingObject(Nuss.class);
@@ -169,21 +169,19 @@ public class Spieler extends OberklasseSpieler
             realisiereCounter(2);
         }
     }
-    
-    
+
     
     private void sterben()
     {
         //open death menue
     }
-    
+
     private boolean amZiel()
     {
         //open endMenue
         return false;
     }
-    
-    
+
     
     /**
      *  Überprüft ob der Spieler den Boden berührt
@@ -194,7 +192,7 @@ public class Spieler extends OberklasseSpieler
         Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Bodencheck.class);
         return under != null;
     }
-    
+
     public boolean headHitsGround()
     {
         //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
@@ -211,7 +209,7 @@ public class Spieler extends OberklasseSpieler
         Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Hindernis.class);
         return under != null;
     }
-    
+
     /**
      *  Änderung in y-Richtung
      */
@@ -220,7 +218,7 @@ public class Spieler extends OberklasseSpieler
         setLocation (getX(), getY() + vSpeed);
         vSpeed += acceleration;
     }
-    
+
     /**
      *  Implementierung der Schwerkraft
      */
@@ -236,14 +234,15 @@ public class Spieler extends OberklasseSpieler
         }
         else {
             if (onTrap()) {
-            Greenfoot.stop();
-        }
-        else {
-            fall();
-        }
+                realisiereCounter(0);
+                setLocation(posX, posY);
+            }
+            else {
+                fall();
+            }
         }
     }
-    
+
     private void springen()
     {
         if(Greenfoot.isKeyDown("w") && onGround() && time == 0 && !headHitsGround())

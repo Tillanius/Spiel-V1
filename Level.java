@@ -76,27 +76,51 @@ public class Level extends World
 
     private void lvl2()
     {
-
+        platform(5,0,100);
+        platform(1,128,132);
+        
+        platform(2,225,100);
+        platform(2,225,132);
+        hindernis();
+        
+        platform(2,352,100);
+        platform(2,352,132);
+        
+        platform(9,128,162);
     }
 
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.
 
      */
 
-    public void platform(int platformlange, int platformstart ,int plaformhoehe)
+    public void platform(int platformlaenge, int platformstart ,int platformhoehe)
 
     {
 
-        for(int dauer =platformstart;dauer < platformlange; dauer++ )
+        for(int i =0;i < platformlaenge; i++ )
 
         { 
 
             Bodencheck bodencheck = new Bodencheck();
             Boden boden =new Boden();
 
-            addObject(boden, 32*dauer, plaformhoehe);
-            addObject(bodencheck, 32*dauer, plaformhoehe);
+            addObject(boden,platformstart+ 32*i, platformhoehe);
+            addObject(bodencheck, platformstart+32*i, platformhoehe);
         }
+
+    }
+    
+    /* Erstellt Plattformen für das Spiel welche modelierbar sind.
+
+     */
+
+    public void hindernis(int ausrichtung, int start ,int hoehe)
+
+    {
+        Hindernis hindernis =new Hindernis(ausrichtung);
+
+        addObject(hindernis, start, hoehe);
+        
 
     }
 

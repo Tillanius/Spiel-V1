@@ -21,7 +21,7 @@ public class MenueWorld extends World
         
         //Alle Menübuttons werden erstellt
         this.addObject(new Button("START","alligator"), 300, 200);
-        this.addObject(new Button("Settings","alligator"), 300, 250);
+        this.addObject(new Button("Settings","settings"), 300, 250);
         this.addObject(new Button("Credits","alligator"), 300, 300);
     }
     

@@ -195,6 +195,23 @@ public class Spieler extends OberklasseSpieler
         return under != null;
     }
     
+    public boolean headHitsGround()
+    {
+        //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
+        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 - 3, Bodencheck.class);
+        return above != null;
+    }
+
+    /**
+     *  Überprüft ob der Spieler eine Falle berührt
+     */
+    public boolean onTrap()
+    {
+        //Am unteren Ende des Spielers wird überprüft ob eine Falle berührt wird.
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Hindernis.class);
+        return under != null;
+    }
+    
     /**
      *  Änderung in y-Richtung
      */
@@ -218,15 +235,20 @@ public class Spieler extends OberklasseSpieler
             checkFall = false;
         }
         else {
+            if (onTrap()) {
+            Greenfoot.stop();
+        }
+        else {
             fall();
+        }
         }
     }
     
     private void springen()
     {
-        if(Greenfoot.isKeyDown("w") && onGround() && time == 0)
+        if(Greenfoot.isKeyDown("w") && onGround() && time == 0 && !headHitsGround())
         {
-            vSpeed = -sprunghöhe; //Negativ weil nach oben.
+            vSpeed = -sprunghöhe; //Negativ weil nach oben
             fall();
             time = 28;
             checkFall = true;

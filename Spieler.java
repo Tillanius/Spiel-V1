@@ -42,8 +42,6 @@ public class Spieler extends OberklasseSpieler
         springen();
         sammeln();
 
-
-
         //Dash
 
         linksDash();
@@ -92,11 +90,10 @@ public class Spieler extends OberklasseSpieler
 
     private void linksLaufen()
     {
-
-        if(Greenfoot.isKeyDown("d") && vornFrei())
+        if(Greenfoot.isKeyDown("a") && vornFrei())
         {
-            setImage("Knight_flipped.png");
-            move(speed);
+            setImage("Knight.png");
+            move(-speed);
             sterben();
         }
     }
@@ -197,7 +194,7 @@ public class Spieler extends OberklasseSpieler
         if (onTrap() || headHitsTrap()) 
         {
             realisiereCounter(0);
-            setLocation(posX, posY);
+            setLocation(posX, posY-30);
         }
     }
 

@@ -8,7 +8,6 @@ public class Koordination
 {
     // instance variables - replace the example below with your own
     private int x;
-    private MyWorld world;
     /**
      * Constructor for objects of class Koordination
      */

@@ -81,7 +81,6 @@ public class Level extends World
         
         platform(2,225,100);
         platform(2,225,132);
-        hindernis();
         
         platform(2,352,100);
         platform(2,352,132);

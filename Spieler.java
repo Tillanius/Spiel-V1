@@ -16,14 +16,9 @@ public class Spieler extends OberklasseSpieler
     private int waitTime = 30;
     private int coolDownCounter = waitTime;
     private boolean doCoolDown;
-<<<<<<< HEAD
-    
+
     private final int dashSpeed = 20;
-=======
 
-    private final int dashSpeed = 2;
-
->>>>>>> 7dafe0760edfe62bf129bc198c1362ab8412adc9
     private final int speed = 6; //Laufgeschwindigkeit
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
     private final int sprunghöhe = 10; //Wie hoch der Spieler springen kann
@@ -46,21 +41,17 @@ public class Spieler extends OberklasseSpieler
         rechtsLaufen();
         springen();
         sammeln();
-<<<<<<< HEAD
-=======
+
+
 
         //Dash
->>>>>>> 7dafe0760edfe62bf129bc198c1362ab8412adc9
+
         linksDash();
         //linksDash2();
         rechtsDash();
         coolDown();
-<<<<<<< HEAD
-        
-        
-=======
 
->>>>>>> 7dafe0760edfe62bf129bc198c1362ab8412adc9
+
         //schwerkraft
         checkFall();
 
@@ -101,32 +92,21 @@ public class Spieler extends OberklasseSpieler
 
     private void linksLaufen()
     {
-<<<<<<< HEAD
+
         if(Greenfoot.isKeyDown("d") && vornFrei())
         {
             setImage("Knight_flipped.png");
             move(speed);
-        }
-    }
-    
-     private void linksDash()
-    {
-        if(Greenfoot.isKeyDown("f") && vornFrei() && coolDown() == true)
-        {
-            setImage("Knight_flipped.png");
-            move(dashSpeed);
-            doCoolDown = true;
+            sterben();
         }
     }
     
     private void rechtsLaufen()
     {
-=======
->>>>>>> 7dafe0760edfe62bf129bc198c1362ab8412adc9
-        if(Greenfoot.isKeyDown("a") && vornFrei())
+        if(Greenfoot.isKeyDown("d") && vornFrei())
         {
-            setImage("Knight.png");
-            move(-speed);
+            setImage("Knight_flipped.png");
+            move(speed);
             sterben();
         }
     }
@@ -136,30 +116,20 @@ public class Spieler extends OberklasseSpieler
         if(Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
         {
             setImage("Knight.png");
-<<<<<<< HEAD
+
             move(-dashSpeed);
 
             doCoolDown = true;
-=======
+
             for(int i=0; i<5; i++){
                 move(-dashSpeed);
                 doCoolDown = true;
             }
->>>>>>> 7dafe0760edfe62bf129bc198c1362ab8412adc9
+
         }
         sterben();
     }
     
-    private void rechtsLaufen()
-    {
-        if(Greenfoot.isKeyDown("d") && vornFrei())
-        {
-            setImage("Knight_flipped.png");
-            move(speed);
-            sterben();
-        }
-    }
-
     private void rechtsDash()
     {
         if(Greenfoot.isKeyDown("d") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
@@ -191,12 +161,12 @@ public class Spieler extends OberklasseSpieler
         
         return coolDownDone;
     }
-<<<<<<< HEAD
-    
-    
-=======
 
->>>>>>> 7dafe0760edfe62bf129bc198c1362ab8412adc9
+    
+    
+
+
+
     public Counter getCounter(int i){
         return meineCounter[i];
     }

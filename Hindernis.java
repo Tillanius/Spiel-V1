@@ -26,7 +26,7 @@ public class Hindernis extends Boden
         }
         else
         {
-            setImage("HindernisUpDown.png");
+            setImage("spikes180.png");
         }
         //setImage("");
     }

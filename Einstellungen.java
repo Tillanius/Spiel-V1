@@ -21,6 +21,7 @@ public class Einstellungen extends World
         setScene();
         
         addObject(new Button("links","alligator"), 250, 190);
+        addObject(new Button("Menue","back"), 50, 25);
     }
     
     private void setScene()

@@ -34,11 +34,8 @@ public class Button extends Actor
         img.setColor(bgColor); //weist Farbe dem Button zu
     }
 
-    public void act()
-    {
-        if(Greenfoot.mouseClicked(this))
-        {
-            switch(text)
+    private void fuehreAktionDurch(){
+        switch(text)
             {
                 case "START":
                     Greenfoot.setWorld(new Level(1));
@@ -55,6 +52,13 @@ public class Button extends Actor
                 default: Greenfoot.setWorld(new MenueWorld());
                     break; 
             }
+    }
+    
+    public void act()
+    {
+        if(Greenfoot.mouseClicked(this))
+        {
+            fuehreAktionDurch();
         }
     }
 }

@@ -20,7 +20,10 @@ public class Einstellungen extends World
         
         setScene();
         
-        addObject(new Button("links","alligator"), 250, 190);
+        addObject(new Button("Links","alligator"), 250, 160);
+        addObject(new Button("Rechts","alligator"), 250, 210);
+        addObject(new Button("Dash","alligator"), 250, 260);
+        addObject(new Button("Springen","alligator"), 250, 310);
     }
     
     private void setScene()
@@ -33,7 +36,10 @@ public class Einstellungen extends World
         img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
         img.drawString("Einstellungen", 85,120); //Menüüberschrift wird erstellt#
         
-        img.setFont(new Font("Arial", false, false, 40));
-        img.drawString("Links", 60,200); //Menüüberschrift wird erstellt
+        img.setFont(new Font("Arial", false, false, 35));
+        img.drawString("Links", 60,170);
+        img.drawString("Rechts", 60,220);
+        img.drawString("Dash", 60,270);
+        img.drawString("Springen", 60,320);
     }
 }

@@ -24,7 +24,7 @@ public class Button extends Actor
 
         setImage(Image+".png");
         GreenfootImage image = getImage();
-        image.scale(100,100);
+        image.scale(100,43);
         setImage(image);
     }
 

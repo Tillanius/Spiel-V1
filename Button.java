@@ -24,7 +24,7 @@ public class Button extends Actor
 
         setImage(Image+".png");
         GreenfootImage image = getImage();
-        image.scale(100,100);
+        image.scale(100,45);
         setImage(image);
     }
 
@@ -52,11 +52,9 @@ public class Button extends Actor
                 case "Credits":
                     Greenfoot.setWorld(new Credits());
                     break; 
-                default: Greenfoot.setWorld(new Level(1));
+                default: Greenfoot.setWorld(new MenueWorld());
                     break; 
             }
         }
     }
-
-    
 }

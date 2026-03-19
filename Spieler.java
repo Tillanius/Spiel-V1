@@ -194,7 +194,7 @@ public class Spieler extends OberklasseSpieler
         if (onTrap() || headHitsTrap()) 
         {
             realisiereCounter(0);
-            setLocation(posX, posY);
+            setLocation(posX, posY-30);
         }
     }
 

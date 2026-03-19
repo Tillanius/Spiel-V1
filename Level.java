@@ -76,16 +76,32 @@ public class Level extends World
 
     private void lvl2()
     {
-        platform(5,0,100);
+        platform(5,0,100);//Startplatform
         platform(1,128,132);
         
-        platform(2,225,100);
+        platform(2,225,100);//erste landefläche
         platform(2,225,132);
         
-        platform(2,352,100);
+        platform(2,352,100);//zweite landefläche
         platform(2,352,132);
         
-        platform(9,128,162);
+        platform(2,512,100);//dritte landefläche
+        platform(2,512,132);
+        
+        //spikes Reihe1
+        hindernis(1,160,137);
+        hindernis(1,192,137);
+        
+        hindernis(1,289,137);
+        hindernis(1,320,137);
+        
+        hindernis(1,416,137);
+        hindernis(1,448,137);
+        hindernis(1,480,137);
+       
+        
+        
+        platform(14,128,162);
     }
 
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.

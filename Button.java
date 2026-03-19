@@ -38,13 +38,19 @@ public class Button extends Actor
     {
         if(Greenfoot.mouseClicked(this))
         {
-            if(text == "START")
+            switch(text)
             {
-                Greenfoot.setWorld(new Level(1));
-            }
-            else if(text == "LEVEL2")
-            {
-                Greenfoot.setWorld(new Level(2));
+                case "START":
+                    Greenfoot.setWorld(new Level(1));
+                
+                case "LEVEL2":
+                    Greenfoot.setWorld(new Level(2));
+                
+                case "settings":
+                    Greenfoot.setWorld(new Einstellungen());
+                    
+                case "credits":
+                    Greenfoot.setWorld(new Credits());
             }
         }
     }

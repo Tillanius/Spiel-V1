@@ -13,6 +13,8 @@ public class Nuss extends Sammelitems
     
     private int nussbild;
     
+    private int etwasLangsamer = 0;
+    
     public Nuss(int posX, int posY)
     {
         this.posX = posX;
@@ -34,13 +36,21 @@ public class Nuss extends Sammelitems
     public void nextImage()
     {
         setImage("MrNut"+nussbild+".png");
-        if(nussbild<13)
+        if(etwasLangsamer < 1)
         {
-            nussbild++;
+            if(nussbild<13)
+            {
+                nussbild++;
+            }
+            else
+            {
+                nussbild = 1;
+            }
+            etwasLangsamer = 1;
         }
         else
         {
-            nussbild = 1;
+            etwasLangsamer--;
         }
     }
 }

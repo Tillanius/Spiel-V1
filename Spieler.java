@@ -204,16 +204,6 @@ public class Spieler extends OberklasseSpieler
         return false;
     }
 
-    
-    /**
-     *  Überprüft ob der Spieler den Boden berührt
-     */
-    public boolean onGround()
-    {
-        //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
-        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Bodencheck.class);
-        return under != null;
-    }
 
     public boolean headHitsGround()
     {
@@ -239,6 +229,17 @@ public class Spieler extends OberklasseSpieler
         return under != null;
     }
 
+    
+    /**
+     *  Überprüft ob der Spieler den Boden berührt
+     */
+    public boolean onGround()
+    {
+        //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Boden.class);
+        return under != null;
+    }
+    
     /**
      *  Änderung in y-Richtung
      */

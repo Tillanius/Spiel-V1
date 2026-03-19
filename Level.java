@@ -47,29 +47,29 @@ public class Level extends World
             Bodencheck bodencheck = new Bodencheck();
             Boden boden =new Boden();
             addObject(boden, 32*i, 390);
-            addObject(bodencheck, 32*i, 390);
+            addObject(bodencheck, 32*i, 390 - 16);
         }
     }
 
     private void lvl1()
     {
         Bodencheck bodencheck = new Bodencheck();
-        addObject(bodencheck,200, 300);
+        addObject(bodencheck,200, 300- 16);
 
         Bodencheck bodencheck2 = new Bodencheck();
-        addObject(bodencheck2,200, 330);
+        addObject(bodencheck2,200, 330- 16);
 
         Bodencheck bodencheck3 = new Bodencheck();
-        addObject(bodencheck3,400, 330);
+        addObject(bodencheck3,400, 330- 16);
 
         Boden boden =new Boden();
-        addObject(boden, 200, 300);
+        addObject(boden, 200, 300- 16);
 
         Boden boden2 =new Boden();
-        addObject(boden2, 400, 300);
+        addObject(boden2, 400, 300- 16);
 
         Hindernis hindernis = new Hindernis(1);
-        addObject(hindernis,400, 280);
+        addObject(hindernis,400, 280- 16);
 
         this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);
     }
@@ -142,7 +142,7 @@ public class Level extends World
             Boden boden =new Boden();
 
             addObject(boden,platformstart+ 32*i, platformhoehe);
-            addObject(bodencheck, platformstart+32*i, platformhoehe);
+            addObject(bodencheck, platformstart+32*i, platformhoehe- 16);
         }
 
     }
@@ -166,8 +166,8 @@ public class Level extends World
      */
     private void prepare()
     {
-        platform(2, 3, 333);
-        platform(4, 4, 100);
-        platform(4, 44, 200);
+        platform(2, 3, 333- 16);
+        platform(4, 4, 100- 16);
+        platform(4, 44, 200- 16);
     }
 }

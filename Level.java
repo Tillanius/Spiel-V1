@@ -88,7 +88,7 @@ public class Level extends World
         platform(2,512,100);//dritte landefläche
         platform(2,512,132);
 
-        platform(14,128,162);//Plattform auf der sich die erste Reihe Spikes befindet
+        platform(14,128,162);//Plattform erste Reihe Spikes 
 
         //spikes Reihe1
         hindernis(1,160,137);
@@ -101,9 +101,9 @@ public class Level extends World
         hindernis(1,448,137);
         hindernis(1,480,137);
 
-        platform(18,50,270);
-         platform(1,50,239);
-         platform(1,50,208);
+        platform(18,50,270);//Plattform zweite Reihe Spikes
+        platform(1,50,239);
+        platform(1,50,208);
         //spikes Reihe2
         hindernis(1,512,245);
         hindernis(2,447,181);
@@ -114,12 +114,12 @@ public class Level extends World
         hindernis(1,261,245);
         hindernis(2,199,181);
         
-        //Nüssegnen
+        //Nüsse
         nuss(225,65);
 
     }
     
-    /* Erstellt Plattformen für das Spiel welche modelierbar sind.
+    /* Erstellt Nüsse für das Spiel an gegebener x- und y-Koordinate
 
      */
 
@@ -147,7 +147,7 @@ public class Level extends World
 
     }
 
-    /* Erstellt Plattformen für das Spiel welche modelierbar sind.
+    /* Erstellt Hindernisse für das Spiel mit einer Ausrichtung an gegebener x- und y-Koordinate
 
      */
 

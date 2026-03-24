@@ -4,6 +4,4 @@ comment0.text=\r\n\ Write\ a\ description\ of\ class\ Bodencheck\ here.\r\n\ \r\
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Bodencheck\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment2.params=
-comment2.target=Bodencheck()
-numComments=3
+numComments=2

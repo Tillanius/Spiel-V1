@@ -78,6 +78,8 @@ public class Spieler extends OberklasseSpieler
         }
     }
 
+    
+    
     public Spieler(int posX, int posY)
     {
         this.posX = posX;

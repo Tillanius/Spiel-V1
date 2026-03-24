@@ -49,6 +49,7 @@ public class Tasteneinstellung extends World
             System.out.println("New key for moving left: " + key);
             Greenfoot.setWorld(new Einstellungen());
         }
+        
     }
     
     public void act(){

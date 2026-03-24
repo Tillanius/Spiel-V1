@@ -21,9 +21,9 @@ public class Einstellungen extends World
         setScene();
         
         addObject(new Button("Links","alligator", 10), 250, 160);
-        addObject(new Button("Rechts","alligator", 10), 250, 210);
-        addObject(new Button("Dash","alligator", 10), 250, 260);
-        addObject(new Button("Springen","alligator", 10), 250, 310);
+        addObject(new Button("Rechts","alligator", 11), 250, 210);
+        addObject(new Button("Dash","alligator", 12), 250, 260);
+        addObject(new Button("Springen","alligator", 13), 250, 310);
         addObject(new Button("Menue","back"), 50, 25);
     }
     

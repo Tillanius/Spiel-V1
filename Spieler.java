@@ -12,12 +12,12 @@ public class Spieler extends OberklasseSpieler
     private int posY;
     public int nuesse;
     public int muenzen;
-    
+
     private int waitTime = 30;
     private int coolDownCounter = waitTime;
     private boolean doCoolDown;
 
-    private final int dashSpeed = 20;
+    private final int dashSpeed = 15;
 
     private final int speed = 6; //Laufgeschwindigkeit
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
@@ -49,7 +49,6 @@ public class Spieler extends OberklasseSpieler
         rechtsDash();
         coolDown();
 
-
         //schwerkraft
         checkFall();
 
@@ -72,7 +71,6 @@ public class Spieler extends OberklasseSpieler
         }
     }
 
-    
     public Spieler(int posX, int posY)
     {
         this.posX = posX;
@@ -90,20 +88,46 @@ public class Spieler extends OberklasseSpieler
 
     private void linksLaufen()
     {
-        if(Greenfoot.isKeyDown("a") && vornFrei())
+        if(Greenfoot.isKeyDown("a"))
         {
             setImage("Knight.png");
-            move(-speed);
+            blickrichtung = WEST;
+
+            for(int i = 0; i < speed; i++)
+            {
+                if(vornFrei())
+                {
+                    setLocation(getX() - 1, getY());
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             sterben();
         }
     }
-    
+
     private void rechtsLaufen()
     {
-        if(Greenfoot.isKeyDown("d") && vornFrei())
+        if(Greenfoot.isKeyDown("d"))
         {
             setImage("Knight_flipped.png");
-            move(speed);
+            blickrichtung = OST;
+
+            for(int i = 0; i < speed; i++)
+            {
+                if(vornFrei())
+                {
+                    setLocation(getX() + 1, getY());
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             sterben();
         }
     }
@@ -113,20 +137,14 @@ public class Spieler extends OberklasseSpieler
         if(Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
         {
             setImage("Knight.png");
-
-            move(-dashSpeed);
-
-            doCoolDown = true;
-
             for(int i=0; i<5; i++){
                 move(-dashSpeed);
                 doCoolDown = true;
             }
-
+            sterben();
         }
-        sterben();
     }
-    
+
     private void rechtsDash()
     {
         if(Greenfoot.isKeyDown("d") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
@@ -155,14 +173,9 @@ public class Spieler extends OberklasseSpieler
             coolDownDone = true;
             coolDownCounter = waitTime;
         }
-        
+
         return coolDownDone;
     }
-
-    
-    
-
-
 
     public Counter getCounter(int i){
         return meineCounter[i];
@@ -172,7 +185,6 @@ public class Spieler extends OberklasseSpieler
         meineCounter[n].add(1);
     }
 
-    
     private void sammeln(Muenze muenze)
     {
         muenzen++;
@@ -188,7 +200,6 @@ public class Spieler extends OberklasseSpieler
         }
     }
 
-    
     private void sterben()
     {
         if (onTrap() || headHitsTrap()) 
@@ -204,17 +215,6 @@ public class Spieler extends OberklasseSpieler
         return false;
     }
 
-    
-    /**
-     *  Überprüft ob der Spieler den Boden berührt
-     */
-    public boolean onGround()
-    {
-        //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
-        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Bodencheck.class);
-        return under != null;
-    }
-
     public boolean headHitsGround()
     {
         //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
@@ -228,49 +228,61 @@ public class Spieler extends OberklasseSpieler
         Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +3, Hindernis.class);
         return above != null;
     }
-    
+
     /**
      *  Überprüft ob der Spieler eine Falle berührt
      */
     public boolean onTrap()
     {
         //Am unteren Ende des Spielers wird überprüft ob eine Falle berührt wird.
-        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Hindernis.class);
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 4, Hindernis.class);
+        return under != null;
+    }
+
+    /**
+     *  Überprüft ob der Spieler den Boden berührt
+     */
+    public boolean onGround()
+    {
+        //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 2, Boden.class);
         return under != null;
     }
 
     /**
      *  Änderung in y-Richtung
      */
-    public void fall()
-    {
-        setLocation (getX(), getY() + vSpeed);
-        sterben();
-        vSpeed += acceleration;
+    public void fall() 
+    { 
+        setLocation (getX(), getY() + vSpeed); 
+        sterben(); 
+        vSpeed += acceleration; 
     }
 
     /**
      *  Implementierung der Schwerkraft
      */
-    public void checkFall()
-    {
-        if (onGround()) {
-            vSpeed = 0;
-            while(onGround() && checkFall)
-            {
-                setLocation(getX(), getY() - 1);
-            }
-            checkFall = false;
-        }
+    public void checkFall() { 
+        if (onGround()) 
+        { 
+            vSpeed = 0; 
+            while(onGround() && checkFall) 
+            { 
+                setLocation(getX(), getY() -1);
+            } 
+            checkFall = false; 
+        } 
         else {
-            if (onTrap()) {
+            if (onTrap()) 
+            { 
                 realisiereCounter(0);
                 setLocation(posX, posY);
-            }
-            else {
+            } 
+            else 
+            { 
                 fall();
-            }
-        }
+            } 
+        } 
     }
 
     private void springen()
@@ -284,4 +296,5 @@ public class Spieler extends OberklasseSpieler
             checkFall = true;
         }
     }
+
 }

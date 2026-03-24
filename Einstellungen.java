@@ -20,8 +20,10 @@ public class Einstellungen extends World
         
         setScene();
         
-        addObject(new Button("Links","alligator"), 250, 160);
-        addObject(new Button("Rechts","alligator"), 250, 210);
+        this.addObject(new Button("Menue","back"), 50, 25);
+        
+        addObject(new Button("Musik","alligator", true), 250, 160);
+        addObject(new Button("SoundFX","alligator", true), 250, 210);
         addObject(new Button("Dash","alligator"), 250, 260);
         addObject(new Button("Springen","alligator"), 250, 310);
     }
@@ -37,8 +39,8 @@ public class Einstellungen extends World
         img.drawString("Einstellungen", 85,120); //Menüüberschrift wird erstellt#
         
         img.setFont(new Font("Arial", false, false, 35));
-        img.drawString("Links", 60,170);
-        img.drawString("Rechts", 60,220);
+        img.drawString("Musik", 60,170);
+        img.drawString("SoundFX", 60,220);
         img.drawString("Dash", 60,270);
         img.drawString("Springen", 60,320);
     }

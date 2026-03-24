@@ -33,7 +33,14 @@ public class Counter extends Actor
         setImage(new GreenfootImage(width, HEIGHT)); //Größe des Bildes wird vorgegeben
         GreenfootImage image = getImage(); //Bild wird gesucht
         image.setColor(TEXT_COLOR);
-        updateImage(); //Bild wird eingefügt
+        if(text=="Nüsse: ")
+        {
+            updateImageNuesse(); //Bild für Nusscounter wird eingefügt
+        }
+        else
+        {
+            updateImage(); //Bild wird eingefügt
+        }
     }
     
     public void add(int score){
@@ -45,5 +52,11 @@ public class Counter extends Actor
         GreenfootImage image = getImage();
         image.clear();
         image.drawString(text + value, PADDING_X, BASELINE_Y);
+    }
+    
+    private void updateImageNuesse() {
+        GreenfootImage image = getImage();
+        image.clear();
+        image.drawString(text + value + " / 5", PADDING_X, BASELINE_Y);
     }
 }

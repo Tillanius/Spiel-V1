@@ -35,6 +35,8 @@ public class Spieler extends OberklasseSpieler
     public Counter[] meineCounter = new Counter[4];
     int zeit = 0; //Im Level verbrachte Zeit
 
+    private boolean disableFallingWhileDashing = false;
+    
     private boolean checkFall = true;
     /**
      * Act - do whatever the Spieler wants to do. This method is called whenever
@@ -142,11 +144,13 @@ public class Spieler extends OberklasseSpieler
         if(Greenfoot.isKeyDown(tasteLinks) && Greenfoot.isKeyDown(tasteDash) && vornFrei() && coolDown() == true)
         {
             setImage("Knight.png");
+            disableFallingWhileDashing = true;
             for(int i=0; i<5; i++){
                 move(-dashSpeed);
                 doCoolDown = true;
             }
             sterben();
+            disableFallingWhileDashing = false;
         }
     }
 
@@ -155,11 +159,13 @@ public class Spieler extends OberklasseSpieler
         if(Greenfoot.isKeyDown(tasteRechts) && Greenfoot.isKeyDown(tasteDash) && vornFrei() && coolDown() == true)
         {
             setImage("Knight_flipped.png");
+            disableFallingWhileDashing = true;
             for(int i=0; i<5; i++){
                 move(dashSpeed);
                 doCoolDown = true;
             }
             sterben();
+            disableFallingWhileDashing = false;
         }
     }
 
@@ -244,6 +250,7 @@ public class Spieler extends OberklasseSpieler
         return under != null;
     }
 
+    
     /**
      *  Überprüft ob der Spieler den Boden berührt
      */
@@ -259,9 +266,12 @@ public class Spieler extends OberklasseSpieler
      */
     public void fall() 
     { 
-        setLocation (getX(), getY() + vSpeed); 
-        sterben(); 
-        vSpeed += acceleration; 
+        if(!disableFallingWhileDashing)
+        {
+            setLocation (getX(), getY() + vSpeed); 
+            sterben(); 
+            vSpeed += acceleration; 
+        }
     }
 
     /**

@@ -11,6 +11,7 @@ public class Level extends World
     private int x;
     private Spieler spieler;
     private Nuss nuss;
+    private Flagge flagge;
     /**
      * Constructor for objects of class Level
      */
@@ -25,8 +26,7 @@ public class Level extends World
         for(int i=0; i<4; i++){
             addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
         }
-        nuss = new Nuss(350,350);
-        addObject(nuss, 350, 350);
+        
         boden();
 
         if(level == 1)
@@ -51,30 +51,7 @@ public class Level extends World
         }
     }
 
-    private void lvl1()
-    {
-        Bodencheck bodencheck = new Bodencheck();
-        addObject(bodencheck,200, 300);
-
-        Bodencheck bodencheck2 = new Bodencheck();
-        addObject(bodencheck2,200, 330);
-
-        Bodencheck bodencheck3 = new Bodencheck();
-        addObject(bodencheck3,400, 330);
-
-        Boden boden =new Boden();
-        addObject(boden, 200, 300);
-
-        Boden boden2 =new Boden();
-        addObject(boden2, 400, 300);
-
-        Hindernis hindernis = new Hindernis(1);
-        addObject(hindernis,400, 280);
-
-        this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);
-    }
-
-    public void lvl2() //Selma und Milena
+    public void lvl1() //Selma und Milena
     {
         platform(5,0,100);//Startplatform
         platform(1,128,132);
@@ -102,25 +79,59 @@ public class Level extends World
         hindernis(1,480,137);
 
         platform(18,50,270);
-         platform(1,50,239);
-         platform(1,50,208);
+        platform(1,50,239);
+        platform(1,50,208);
         //spikes Reihe2
         hindernis(1,512,245);
-        hindernis(2,447,181);
+        hindernis(2,447,187);
         
         hindernis(1,385,245);
-        hindernis(2,323,181);
+        hindernis(2,323,187);
         
         hindernis(1,261,245);
-        hindernis(2,199,181);
+        hindernis(2,199,187);
         
-        //Nüssegnen
-        nuss(225,65);
-        nuss(225,65);
-
+        hindernis(1,137,245);
+        
+        hindernis(1,199,365);//3.Plattform
+        hindernis(1,230,365);
+        hindernis(1,261,365);
+        hindernis(1,292,365);
+        
+        //Nüsse
+        nuss(225,65);//1.Plattform
+        nuss(448,60);
+        
+        nuss(20,137);//2.Plattform
+        
+        //Zielflagge
+        flagge(580,365);//3.Plattform
     }
     
-    /* Erstellt Plattformen für das Spiel welche modelierbar sind.
+    private void lvl2()
+    {
+        Bodencheck bodencheck = new Bodencheck();
+        addObject(bodencheck,200, 300);
+
+        Bodencheck bodencheck2 = new Bodencheck();
+        addObject(bodencheck2,200, 330);
+
+        Bodencheck bodencheck3 = new Bodencheck();
+        addObject(bodencheck3,400, 330);
+
+        Boden boden =new Boden();
+        addObject(boden, 200, 300);
+
+        Boden boden2 =new Boden();
+        addObject(boden2, 400, 300);
+
+        Hindernis hindernis = new Hindernis(1);
+        addObject(hindernis,400, 280);
+
+        this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);
+    }
+    
+    /* Erstellt Nüsse für das Spiel 
 
      */
 
@@ -130,6 +141,18 @@ public class Level extends World
         Nuss nuss =new Nuss(x,y);
 
         addObject(nuss, x, y);
+
+    }
+    
+    /* Erstellt Zielflagge für das Spiel
+     */
+
+    public void flagge( int x ,int y) //Selma und Milena
+
+    {
+        Flagge flagge =new Flagge(x,y);
+
+        addObject(flagge, x, y);
 
     }
 

@@ -102,8 +102,8 @@ public class Level extends World
         hindernis(1,480,137);
 
         platform(18,50,270);
-         platform(1,50,239);
-         platform(1,50,208);
+        platform(1,50,239);
+        platform(1,50,208);
         //spikes Reihe2
         hindernis(1,512,245);
         hindernis(2,447,181);
@@ -114,10 +114,18 @@ public class Level extends World
         hindernis(1,261,245);
         hindernis(2,199,181);
         
-        //Nüssegnen
-        nuss(225,65);
-        nuss(225,65);
-
+        hindernis(1,137,245);
+        
+        hindernis(1,199,580);//3.Plattform
+        hindernis(1,230,580);
+        hindernis(1,261,580);
+        hindernis(1,292,580);
+        
+        //Nüsse
+        nuss(225,65);//1.Plattform
+        nuss(448,80);
+        
+        nuss(20,137);//2.Plattform
     }
     
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.

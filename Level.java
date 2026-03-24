@@ -112,20 +112,20 @@ public class Level extends World
         
         //spikes Reihe2
         hindernis(1,512,245);
-        hindernis(2,447,181);
+        hindernis(2,447,187);
         
         hindernis(1,385,245);
-        hindernis(2,323,181);
+        hindernis(2,323,187);
         
         hindernis(1,261,245);
-        hindernis(2,199,181);
+        hindernis(2,199,187);
         
         hindernis(1,137,245);
         
-        hindernis(1,199,580);//3.Plattform
-        hindernis(1,230,580);
-        hindernis(1,261,580);
-        hindernis(1,292,580);
+        hindernis(1,200,365);//3.Plattform
+        hindernis(1,230,365);
+        hindernis(1,260,365);
+        hindernis(1,290,365);
         
         //Nüsse
         nuss(225,65);//1.Plattform

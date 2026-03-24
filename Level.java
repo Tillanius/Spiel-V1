@@ -93,16 +93,19 @@ public class Level extends World
         
         hindernis(1,137,245);
         
-        hindernis(1,199,365);//3.Plattform
+        hindernis(1,199,365); //3.Plattform
         hindernis(1,230,365);
         hindernis(1,261,365);
         hindernis(1,292,365);
         
         //Nüsse
-        nuss(225,65);//1.Plattform
+        nuss(225,65); //1.Plattform
         nuss(448,60);
         
-        nuss(20,137);//2.Plattform
+        nuss(20,137); //2.Plattform
+        nuss(323,235);
+        
+        nuss(245,320); //3.Plattform
         
         //Zielflagge
         flagge(580,365);//3.Plattform

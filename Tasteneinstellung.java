@@ -11,8 +11,7 @@ public class Tasteneinstellung extends World
 
     private int einstellung;
     private String taste;
-    private String moveLeftKey = "a";
-    
+    private String pressedKey;
     
     /**
      * Constructor for objects of class Tasteneinstellung.
@@ -25,8 +24,11 @@ public class Tasteneinstellung extends World
         setBackgroundColor();
     }
     
-    public void setEinstellung(int n){
-        einstellung = n;
+    public Tasteneinstellung(int f)
+    {
+        super(600, 400, 1);
+        setBackgroundColor();
+        einstellung = f;
     }
     
     private void setBackgroundColor()
@@ -41,18 +43,38 @@ public class Tasteneinstellung extends World
         img.drawString("für die Akion", 10,160);//Menüüberschrift wird erstellt
     }
     
-    private void stelleEin(){
+    private void stelleEin(int l){
         String key = Greenfoot.getKey();
-        
-        if (key != null) {
-            moveLeftKey = key;
-            System.out.println("New key for moving left: " + key);
-            Greenfoot.setWorld(new Einstellungen());
+            if (key != null) {
+                pressedKey = key;
+                System.out.println("New key: " + key);
+                Greenfoot.setWorld(new Einstellungen());
+            }
+    }
+    
+    
+    private void fuehreAktionDurch(){
+        switch(einstellung)
+        {
+            case 0:
+                stelleEin(0);
+                break;
+            case 1:
+                stelleEin(1);
+                break;
+            case 2:
+                stelleEin(2);
+                break;
+            case 3:
+                stelleEin(3);
+                break;
         }
+        
+        
         
     }
     
     public void act(){
-        stelleEin();
+        fuehreAktionDurch();
     }
 }

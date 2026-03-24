@@ -33,7 +33,7 @@ public class Counter extends Actor
         setImage(new GreenfootImage(width, HEIGHT)); //Größe des Bildes wird vorgegeben
         GreenfootImage image = getImage(); //Bild wird gesucht
         image.setColor(TEXT_COLOR);
-        if(text=="Nüsse: ")
+        if(text=="Nüsse: ") //Selma und Milena
         {
             updateImageNuesse(); //Bild für Nusscounter wird eingefügt
         }

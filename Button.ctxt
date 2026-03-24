@@ -14,4 +14,6 @@ comment5.params=
 comment5.target=void\ act()
 comment6.params=
 comment6.target=void\ toggle()
-numComments=7
+comment7.params=Image
+comment7.target=void\ Image(java.lang.String)
+numComments=8

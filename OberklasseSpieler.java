@@ -28,7 +28,7 @@ public class OberklasseSpieler extends Actor
      */
     public final static int WEST = 3;
 
-    private int blickrichtung;
+    protected int blickrichtung;
     
     /**
      * Act - do whatever the OberklasseSpieler wants to do. This method is called whenever

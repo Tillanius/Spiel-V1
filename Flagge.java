@@ -14,11 +14,10 @@ public class Flagge extends Weltblöcke
     public Flagge (int posX, int posY)
     {
         super();
+        this.posX = posX;
+        this.posY = posY;
+        setImage("flagge.png");
+        }
     
-    }
     
-    public void platziereFlagge(int posX,int posY)
-    {
-        
-    }
 }

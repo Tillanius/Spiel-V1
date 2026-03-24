@@ -225,10 +225,6 @@ public class Spieler extends OberklasseSpieler
         {
           Greenfoot.setWorld(new Level(2));
         }
-        else
-        {
-            
-        }
     }
     
     public boolean headHitsGround()

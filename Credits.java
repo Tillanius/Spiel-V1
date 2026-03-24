@@ -31,9 +31,6 @@ public class Credits extends World
         setBackground(img); //Weist Hintergrund Bild zu
         img.setColor(new Color(78,181,78)); //Schriftfarbe
         img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
-        img.drawString("Einstellungen", 85,120); //Menüüberschrift wird erstellt#
-        
-        img.setFont(new Font("Arial", false, false, 40));
-        img.drawString("Links", 60,200); //Menüüberschrift wird erstellt
+        img.drawString("Credits", 180 ,120); //Menüüberschrift wird erstellt#
     }
 }

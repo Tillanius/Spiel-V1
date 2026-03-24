@@ -29,7 +29,7 @@ public class OberklasseSpieler extends Actor
     public final static int WEST = 3;
 
     protected int blickrichtung;
-
+    
     /**
      * Act - do whatever the OberklasseSpieler wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -38,51 +38,32 @@ public class OberklasseSpieler extends Actor
     {
         // Add your action code here.
     }
-
-    public boolean obenFrei()
-    {
-        int offsetY = -getImage().getHeight() / 2;
-        Object obenBoden = getOneObjectAtOffset(0, offsetY, Boden.class);
-        Object obenCheck = getOneObjectAtOffset(0, offsetY, Bodencheck.class);
-        return obenBoden == null && obenCheck == null;
+    
+    public boolean vornFrei() {
+        return true;
+        
+        // int x = getX();
+        // int y = getY();
+        // switch (blickrichtung) {
+        // case SUED:
+            // y++;
+            // break;
+        // case OST:
+            // x++;
+            // break;
+        // case NORD:
+            // y--;
+            // break;
+        // case WEST:
+            // x--;
+            // break;
+        // }
+    
+        // if (x >= getWorld().getWidth() || y >= getWorld().getHeight() || x < 0
+                // || y < 0) {
+            // return false;
+        // }
+    
+        // return getWorld().getObjectsAt(x, y, Boden.class).size() == 0;
     }
-
-    public boolean vornFrei()
-{
-    int offsetX = 0;
-    int offsetY = 0;
-
-    int abstand = getImage().getWidth() / 2;
-
-    if(blickrichtung == OST)
-    {
-        offsetX = abstand;
-    }
-    else if(blickrichtung == WEST)
-    {
-        offsetX = -abstand;
-    }
-    else if(blickrichtung == NORD)
-    {
-        offsetY = -abstand;
-    }
-    else if(blickrichtung == SUED)
-    {
-        offsetY = abstand;
-    }
-
-    Actor obj = getOneObjectAtOffset(offsetX, offsetY, Boden.class);
-
-    if (obj instanceof Hindernis)
-    {
-        return true; // Hindernis → TRUE
-    }
-
-    if (obj != null)
-    {
-        return false; // normaler Boden → FALSE
-    }
-
-    return true; // nichts → TRUE
-}
 }

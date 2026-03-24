@@ -10,6 +10,9 @@ public class Tasteneinstellung extends World
 {
 
     private int einstellung;
+    private String taste;
+    private String moveLeftKey = "a";
+    
     
     /**
      * Constructor for objects of class Tasteneinstellung.
@@ -48,9 +51,12 @@ public class Tasteneinstellung extends World
     }
     
     public void act(){
-        if(Greenfoot.isKeyDown("a"))
-        {
-            stelleEin();
+        String key = Greenfoot.getKey();
+        
+        if (key != null) {
+            moveLeftKey = key;
+            System.out.println("New key for moving left: " + key);
+            Greenfoot.setWorld(new Einstellungen());
         }
     }
 }

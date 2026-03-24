@@ -71,7 +71,7 @@ public class Level extends World
         Hindernis hindernis = new Hindernis(1);
         addObject(hindernis,400, 280- 16);
 
-        this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);
+        this.addObject(new Button("LEVEL2","NextLevel",2), 500, 40);
     }
 
     public void lvl2()

@@ -20,10 +20,11 @@ public class Einstellungen extends World
         
         setScene();
         
-        addObject(new Button("Links","alligator"), 250, 160);
-        addObject(new Button("Rechts","alligator"), 250, 210);
-        addObject(new Button("Dash","alligator"), 250, 260);
-        addObject(new Button("Springen","alligator"), 250, 310);
+        addObject(new Button("Links","alligator", 10), 250, 160);
+        addObject(new Button("Rechts","alligator", 10), 250, 210);
+        addObject(new Button("Dash","alligator", 10), 250, 260);
+        addObject(new Button("Springen","alligator", 10), 250, 310);
+        addObject(new Button("Menue","back"), 50, 25);
     }
     
     private void setScene()
@@ -42,4 +43,6 @@ public class Einstellungen extends World
         img.drawString("Dash", 60,270);
         img.drawString("Springen", 60,320);
     }
+    
+    
 }

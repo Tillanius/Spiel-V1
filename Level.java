@@ -51,30 +51,7 @@ public class Level extends World
         }
     }
 
-    private void lvl1()
-    {
-        Bodencheck bodencheck = new Bodencheck();
-        addObject(bodencheck,200, 300);
-
-        Bodencheck bodencheck2 = new Bodencheck();
-        addObject(bodencheck2,200, 330);
-
-        Bodencheck bodencheck3 = new Bodencheck();
-        addObject(bodencheck3,400, 330);
-
-        Boden boden =new Boden();
-        addObject(boden, 200, 300);
-
-        Boden boden2 =new Boden();
-        addObject(boden2, 400, 300);
-
-        Hindernis hindernis = new Hindernis(1);
-        addObject(hindernis,400, 280);
-
-        this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);
-    }
-
-    public void lvl2() //Selma und Milena
+    public void lvl1() //Selma und Milena
     {
         platform(5,0,100);//Startplatform
         platform(1,128,132);
@@ -129,6 +106,29 @@ public class Level extends World
         
         //Zielflagge
         flagge(580,365);//3.Plattform
+    }
+    
+    private void lvl2()
+    {
+        Bodencheck bodencheck = new Bodencheck();
+        addObject(bodencheck,200, 300);
+
+        Bodencheck bodencheck2 = new Bodencheck();
+        addObject(bodencheck2,200, 330);
+
+        Bodencheck bodencheck3 = new Bodencheck();
+        addObject(bodencheck3,400, 330);
+
+        Boden boden =new Boden();
+        addObject(boden, 200, 300);
+
+        Boden boden2 =new Boden();
+        addObject(boden2, 400, 300);
+
+        Hindernis hindernis = new Hindernis(1);
+        addObject(hindernis,400, 280);
+
+        this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);
     }
     
     /* Erstellt Nüsse für das Spiel 

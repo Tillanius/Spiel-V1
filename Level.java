@@ -74,7 +74,7 @@ public class Level extends World
         this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);
     }
 
-    public void lvl2()
+    public void lvl2() //Selma und Milena
     {
         platform(5,0,100);//Startplatform
         platform(1,128,132);
@@ -116,6 +116,7 @@ public class Level extends World
         
         //Nüsse
         nuss(225,65);
+        nuss(225,65);
 
     }
     
@@ -123,7 +124,7 @@ public class Level extends World
 
      */
 
-    public void nuss( int x ,int y)
+    public void nuss( int x ,int y) //Selma und Milena
 
     {
         Nuss nuss =new Nuss(x,y);
@@ -134,7 +135,7 @@ public class Level extends World
 
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.
      */
-    public void platform(int platformlaenge, int platformstart ,int platformhoehe)
+    public void platform(int platformlaenge, int platformstart ,int platformhoehe)//David, Selma und Milena
     {
         for(int i =0;i < platformlaenge; i++ )
         { 
@@ -151,7 +152,7 @@ public class Level extends World
 
      */
 
-    public void hindernis(int ausrichtung, int x ,int y)
+    public void hindernis(int ausrichtung, int x ,int y)//Selma und Milena
 
     {
         Hindernis hindernis =new Hindernis(ausrichtung);

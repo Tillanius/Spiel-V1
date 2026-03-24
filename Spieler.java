@@ -17,7 +17,7 @@ public class Spieler extends OberklasseSpieler
     private int coolDownCounter = waitTime;
     private boolean doCoolDown;
 
-    private final int dashSpeed = 20;
+    private final int dashSpeed = 15;
 
     private final int speed = 6; //Laufgeschwindigkeit
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
@@ -137,18 +137,12 @@ public class Spieler extends OberklasseSpieler
         if(Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
         {
             setImage("Knight.png");
-
-                move(-dashSpeed);
-
-            doCoolDown = true;
-
             for(int i=0; i<5; i++){
                 move(-dashSpeed);
                 doCoolDown = true;
             }
             sterben();
         }
-        sterben();
     }
 
     private void rechtsDash()
@@ -251,7 +245,7 @@ public class Spieler extends OberklasseSpieler
     public boolean onGround()
     {
         //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
-        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 3, Boden.class);
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 2, Boden.class);
         return under != null;
     }
 

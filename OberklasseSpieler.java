@@ -40,30 +40,30 @@ public class OberklasseSpieler extends Actor
     }
     
     public boolean vornFrei() {
-        return true;
+        // return true;
         
-        // int x = getX();
-        // int y = getY();
-        // switch (blickrichtung) {
-        // case SUED:
-            // y++;
-            // break;
-        // case OST:
-            // x++;
-            // break;
-        // case NORD:
-            // y--;
-            // break;
-        // case WEST:
-            // x--;
-            // break;
-        // }
+        int x = getX();
+        int y = getY();
+        switch (blickrichtung) {
+        case SUED:
+            y++;
+            break;
+        case OST:
+            x++;
+            break;
+        case NORD:
+            y--;
+            break;
+        case WEST:
+            x--;
+            break;
+        }
     
-        // if (x >= getWorld().getWidth() || y >= getWorld().getHeight() || x < 0
-                // || y < 0) {
-            // return false;
-        // }
+        if (x >= getWorld().getWidth() || y >= getWorld().getHeight() || x < 0
+                || y < 0) {
+            return false;
+        }
     
-        // return getWorld().getObjectsAt(x, y, Boden.class).size() == 0;
+        return getWorld().getObjectsAt(x, y, Boden.class).size() == 0;
     }
 }

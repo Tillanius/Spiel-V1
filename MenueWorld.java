@@ -50,11 +50,11 @@ public class MenueWorld extends World
 
      { 
 
-        //Bodencheck bodencheck = new Bodencheck();
+        Bodencheck bodencheck = new Bodencheck();
             Boden boden =new Boden();
 
         addObject(boden, 32*dauer, plaformhoehe);
-        //addObject(bodencheck, 32*dauer, plaformhoehe);
+        addObject(bodencheck, 32*dauer, plaformhoehe);
      }
 
     }

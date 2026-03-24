@@ -47,29 +47,29 @@ public class Level extends World
             Bodencheck bodencheck = new Bodencheck();
             Boden boden =new Boden();
             addObject(boden, 32*i, 390);
-            addObject(bodencheck, 32*i, 390 - 16);
+            addObject(bodencheck, 32*i, 390);
         }
     }
 
     private void lvl1()
     {
         Bodencheck bodencheck = new Bodencheck();
-        addObject(bodencheck,200, 300- 16);
+        addObject(bodencheck,200, 300);
 
         Bodencheck bodencheck2 = new Bodencheck();
-        addObject(bodencheck2,200, 330- 16);
+        addObject(bodencheck2,200, 330);
 
         Bodencheck bodencheck3 = new Bodencheck();
-        addObject(bodencheck3,400, 330- 16);
+        addObject(bodencheck3,400, 330);
 
         Boden boden =new Boden();
-        addObject(boden, 200, 300- 16);
+        addObject(boden, 200, 300);
 
         Boden boden2 =new Boden();
-        addObject(boden2, 400, 300- 16);
+        addObject(boden2, 400, 300);
 
         Hindernis hindernis = new Hindernis(1);
-        addObject(hindernis,400, 280- 16);
+        addObject(hindernis,400, 280);
 
         this.addObject(new Button("LEVEL2","NextLevel"), 500, 40);
     }
@@ -88,7 +88,7 @@ public class Level extends World
         platform(2,512,100);//dritte landefläche
         platform(2,512,132);
 
-        platform(14,128,162);//Plattform erste Reihe Spikes 
+        platform(14,128,162);//Plattform auf der sich die erste Reihe Spikes befindet
 
         //spikes Reihe1
         hindernis(1,160,137);
@@ -101,9 +101,9 @@ public class Level extends World
         hindernis(1,448,137);
         hindernis(1,480,137);
 
-        platform(18,50,270);//Plattform zweite Reihe Spikes
-        platform(1,50,239);
-        platform(1,50,208);
+        platform(18,50,270);
+         platform(1,50,239);
+         platform(1,50,208);
         //spikes Reihe2
         hindernis(1,512,245);
         hindernis(2,447,181);
@@ -114,13 +114,13 @@ public class Level extends World
         hindernis(1,261,245);
         hindernis(2,199,181);
         
-        //Nüsse
+        //Nüssegnen
         nuss(225,65);
         nuss(225,65);
 
     }
     
-    /* Erstellt Nüsse für das Spiel an gegebener x- und y-Koordinate
+    /* Erstellt Plattformen für das Spiel welche modelierbar sind.
 
      */
 
@@ -143,12 +143,12 @@ public class Level extends World
             Boden boden =new Boden();
 
             addObject(boden,platformstart+ 32*i, platformhoehe);
-            addObject(bodencheck, platformstart+32*i, platformhoehe- 16);
+            addObject(bodencheck, platformstart+32*i, platformhoehe);
         }
 
     }
 
-    /* Erstellt Hindernisse für das Spiel mit einer Ausrichtung an gegebener x- und y-Koordinate
+    /* Erstellt Plattformen für das Spiel welche modelierbar sind.
 
      */
 
@@ -167,8 +167,8 @@ public class Level extends World
      */
     private void prepare()
     {
-        platform(2, 3, 333- 16);
-        platform(4, 4, 100- 16);
-        platform(4, 44, 200- 16);
+        platform(2, 3, 333);
+        platform(4, 4, 100);
+        platform(4, 44, 200);
     }
 }

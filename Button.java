@@ -76,16 +76,16 @@ public class Button extends Actor
                     Greenfoot.setWorld(new Credits());
                     break; 
                 case 10:
-                    Greenfoot.setWorld(new Tasteneinstellung());
+                    Greenfoot.setWorld(new Tasteneinstellung(0));
                     break;
                 case 11:
-                    Greenfoot.setWorld(new Tasteneinstellung());
+                    Greenfoot.setWorld(new Tasteneinstellung(1));
                     break;
                 case 12:
-                    Greenfoot.setWorld(new Tasteneinstellung());
+                    Greenfoot.setWorld(new Tasteneinstellung(2));
                     break;
                 case 13:
-                    Greenfoot.setWorld(new Tasteneinstellung());
+                    Greenfoot.setWorld(new Tasteneinstellung(3));
                     break;
                 default: Greenfoot.setWorld(new MenueWorld());
                     break;

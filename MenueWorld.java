@@ -27,13 +27,15 @@ public class MenueWorld extends World
     
     private void setBackgroundColor()
     {
-        GreenfootImage img = new GreenfootImage(getWidth(), getHeight()); //Hintergrund des Menüs wird an Feldgröße angepasst
-        img.setColor(new Color(168,205,168)); //Farbe für Hintergrund wird bestimmt
-        img.fill(); //Hintergrund Bild wird gefärbt/gefüllt
+        
+        GreenfootImage img = new GreenfootImage("menue.png"); //Hintergrund des Menüs wird an Feldgröße angepasst
+        img.scale(getWidth(), getHeight());
+        //img.setColor(new Color(168,205,168)); //Farbe für Hintergrund wird bestimmt
+        //img.fill(); //Hintergrund Bild wird gefärbt/gefüllt
         setBackground(img); //Weist Hintergrund Bild zu
-        img.setColor(new Color(78,181,78)); //Schriftfarbe
-        img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
-        img.drawString("MENÜ", 210,120); //Menüüberschrift wird erstellt
+        //img.setColor(new Color(78,181,78)); //Schriftfarbe
+        //img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
+        //img.drawString("MENÜ", 210,120); //Menüüberschrift wird erstellt
     }
     
     /**

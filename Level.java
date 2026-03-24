@@ -54,19 +54,23 @@ public class Level extends World
     public void lvl1() //Selma und Milena
     {
         platform(5,0,100);//Startplatform
-        platform(1,128,132);
+        platformE(1,128,132);
 
         platform(2,225,100);//erste landefläche
-        platform(2,225,132);
+        platformE(2,225,132);
 
         platform(2,352,100);//zweite landefläche
-        platform(2,352,132);
+        platformE(2,352,132);
 
         platform(2,512,100);//dritte landefläche
-        platform(2,512,132);
+        platformE(2,512,132);
 
-        platform(14,128,162);//Plattform auf der sich die erste Reihe Spikes befindet
-
+        platform(11,160,162);//Plattform auf der sich die erste Reihe Spikes befindet
+        platformE(1,128,162);
+        platformE(2,512,162);
+        platformE(2,224,162);
+        platformE(2,352,162);
+        
         //spikes Reihe1
         hindernis(1,160,137);
         hindernis(1,192,137);
@@ -79,8 +83,10 @@ public class Level extends World
         hindernis(1,480,137);
 
         platform(18,50,270);
-        platform(1,50,239);
+        platformE(1,50,270);
+        platformE(1,50,239);
         platform(1,50,208);
+        
         //spikes Reihe2
         hindernis(1,512,245);
         hindernis(2,447,187);
@@ -165,15 +171,25 @@ public class Level extends World
     {
         for(int i =0;i < platformlaenge; i++ )
         { 
-            Bodencheck bodencheck = new Bodencheck();
             Boden boden =new Boden();
 
             addObject(boden,platformstart+ 32*i, platformhoehe);
-            addObject(bodencheck, platformstart+32*i, platformhoehe);
         }
 
     }
 
+    /* Erstellt Plattformen für das Spiel welche modelierbar sind.
+     */
+    public void platformE(int platformlaenge, int platformstart ,int platformhoehe)//David, Selma und Milena
+    {
+        for(int i =0;i < platformlaenge; i++ )
+        { 
+            Boden boden =new Boden("erde");
+
+            addObject(boden,platformstart+ 32*i, platformhoehe);
+        }
+    }
+    
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.
 
      */

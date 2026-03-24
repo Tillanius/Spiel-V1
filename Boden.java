@@ -21,4 +21,9 @@ public class Boden extends Weltblöcke
     {
         setImage("boden.png");
     }
+    
+    public Boden(String image)
+    {
+        setImage(image + ".png");
+    }
 }

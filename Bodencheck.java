@@ -17,10 +17,10 @@ public class Bodencheck extends Boden
         // Add your action code here.
     }
     
-    public Bodencheck()
-    {
-        super();
-        setImage("Bodencheck.png");
-        //setImage("");
-    }
+    // public Bodencheck()
+    // {
+        // super();
+        // setImage("Bodencheck.png");
+        // setImage("");
+    // }
 }

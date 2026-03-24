@@ -20,20 +20,22 @@ public class MenueWorld extends World
         setBackgroundColor(); //Weist Feld Hintergrund zu
         
         //Alle Menübuttons werden erstellt
-        this.addObject(new Button("START","alligator"), 300, 200);
-        this.addObject(new Button("Settings","settings"), 300, 250);
-        this.addObject(new Button("Credits","credits"), 300, 300);
+        this.addObject(new Button("START","alligator", 1), 300, 200);
+        this.addObject(new Button("Settings","settings", 3), 300, 250);
+        this.addObject(new Button("Credits","credits", 4), 300, 300);
     }
     
     private void setBackgroundColor()
     {
-        GreenfootImage img = new GreenfootImage(getWidth(), getHeight()); //Hintergrund des Menüs wird an Feldgröße angepasst
-        img.setColor(new Color(168,205,168)); //Farbe für Hintergrund wird bestimmt
-        img.fill(); //Hintergrund Bild wird gefärbt/gefüllt
+        
+        GreenfootImage img = new GreenfootImage("menue.png"); //Hintergrund des Menüs wird an Feldgröße angepasst
+        img.scale(getWidth(), getHeight());
+        //img.setColor(new Color(168,205,168)); //Farbe für Hintergrund wird bestimmt
+        //img.fill(); //Hintergrund Bild wird gefärbt/gefüllt
         setBackground(img); //Weist Hintergrund Bild zu
-        img.setColor(new Color(78,181,78)); //Schriftfarbe
-        img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
-        img.drawString("MENÜ", 210,120); //Menüüberschrift wird erstellt
+        //img.setColor(new Color(78,181,78)); //Schriftfarbe
+        //img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
+        //img.drawString("MENÜ", 210,120); //Menüüberschrift wird erstellt
     }
     
     /**

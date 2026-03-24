@@ -42,15 +42,6 @@ public class Tasteneinstellung extends World
     }
     
     private void stelleEin(){
-        switch(einstellung)
-            {
-                case 0:
-                    Greenfoot.setWorld(new Level(1));
-                    break;                
-            }
-    }
-    
-    public void act(){
         String key = Greenfoot.getKey();
         
         if (key != null) {
@@ -58,5 +49,9 @@ public class Tasteneinstellung extends World
             System.out.println("New key for moving left: " + key);
             Greenfoot.setWorld(new Einstellungen());
         }
+    }
+    
+    public void act(){
+        stelleEin();
     }
 }

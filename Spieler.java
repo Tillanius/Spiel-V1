@@ -14,10 +14,10 @@ public class Spieler extends OberklasseSpieler
     public int muenzen;
 
     private int waitTime = 30;
-    private int coolDownCounter = waitTime;
-    private boolean doCoolDown;
+    private int coolDownCounter = waitTime; //Wie viele frames der Cooldown lang sein soll
+    private boolean doCoolDown; //Variable, damit der Spieler weiß, ob er den Cooldown machen muss
 
-    private final int dashSpeed = 15;
+    private final int dashSpeed = 15; // Wie schnell der Spieler den Dash macht
 
     private final int speed = 6; //Laufgeschwindigkeit
     private final int acceleration = 1; //Variable für die Stärke der Schwerkraft
@@ -26,6 +26,11 @@ public class Spieler extends OberklasseSpieler
 
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
 
+    private String tasteLinks = "a";
+    private String tasteRechts = "d";
+    private String tasteSprung = "w";
+    private String tasteDash = "shift";
+    
     //Countervariablen
     public Counter[] meineCounter = new Counter[4];
     int zeit = 0; //Im Level verbrachte Zeit
@@ -88,7 +93,7 @@ public class Spieler extends OberklasseSpieler
 
     private void linksLaufen()
     {
-        if(Greenfoot.isKeyDown("a"))
+        if(Greenfoot.isKeyDown(tasteLinks))
         {
             setImage("Knight.png");
             blickrichtung = WEST;
@@ -111,7 +116,7 @@ public class Spieler extends OberklasseSpieler
 
     private void rechtsLaufen()
     {
-        if(Greenfoot.isKeyDown("d"))
+        if(Greenfoot.isKeyDown(tasteRechts))
         {
             setImage("Knight_flipped.png");
             blickrichtung = OST;
@@ -134,7 +139,7 @@ public class Spieler extends OberklasseSpieler
 
     private void linksDash()
     {
-        if(Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
+        if(Greenfoot.isKeyDown(tasteLinks) && Greenfoot.isKeyDown(tasteDash) && vornFrei() && coolDown() == true)
         {
             setImage("Knight.png");
             for(int i=0; i<5; i++){
@@ -147,7 +152,7 @@ public class Spieler extends OberklasseSpieler
 
     private void rechtsDash()
     {
-        if(Greenfoot.isKeyDown("d") && Greenfoot.isKeyDown("shift") && vornFrei() && coolDown() == true)
+        if(Greenfoot.isKeyDown(tasteRechts) && Greenfoot.isKeyDown(tasteDash) && vornFrei() && coolDown() == true)
         {
             setImage("Knight_flipped.png");
             for(int i=0; i<5; i++){
@@ -287,7 +292,7 @@ public class Spieler extends OberklasseSpieler
 
     private void springen()
     {
-        if(Greenfoot.isKeyDown("w") && onGround() && time == 0 && !headHitsGround())
+        if(Greenfoot.isKeyDown(tasteSprung) && onGround() && time == 0 && !headHitsGround())
         {
             vSpeed = -sprunghöhe;
             sterben();

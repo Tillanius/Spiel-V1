@@ -94,12 +94,12 @@ public class Button extends Actor
         if(onOff == ON)
         {
             onOff = OFF;
-            Image("MusikOff");
+            Image(text+"Off");
         }
         else if(onOff == OFF)
         {
             onOff = ON;
-            Image("Musik");
+            Image(text);
         }
     }
     

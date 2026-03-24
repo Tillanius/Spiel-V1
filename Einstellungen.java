@@ -22,7 +22,7 @@ public class Einstellungen extends World
         
         this.addObject(new Button("Menue","back"), 50, 25);
         
-        addObject(new Button("Musik","alligator", true), 300, 160);
+        addObject(new Button("Musik","Musik", true), 300, 160);
         addObject(new Button("SoundFX","alligator", true), 300, 210);
         addObject(new Button("Dash","alligator"), 300, 260);
         addObject(new Button("Springen","alligator"), 300, 310);

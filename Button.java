@@ -91,9 +91,23 @@ public class Button extends Actor
     
     public void toggle()
     {
-        if(onOff)
+        if(onOff == ON)
         {
-            
+            onOff = OFF;
+            Image("MusikOff");
         }
+        else if(onOff == OFF)
+        {
+            onOff = ON;
+            Image("Musik");
+        }
+    }
+    
+    public void Image(String Image)
+    {
+        setImage(Image+".png");
+        GreenfootImage image = getImage();
+        image.scale(100,45);
+        setImage(image);
     }
 }

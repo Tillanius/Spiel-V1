@@ -20,7 +20,7 @@ public class Credits extends World
         
         setScene();
         
-        this.addObject(new Button("Menue","back",0), 50, 25);
+        this.addObject(new Button("Menue","back"), 50, 25);
     }
     
     private void setScene()

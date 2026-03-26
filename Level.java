@@ -38,6 +38,8 @@ public class Level extends World
             lvl2();
         }
         //wprepare();
+        
+        Musik.changeMusik("MusikV1.mp3");
     }
 
     private void boden()

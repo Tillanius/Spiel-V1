@@ -30,13 +30,17 @@ public class Level extends World
         addObject(nuss, 350, 350);
         boden();
 
-        if(level == 1)
+        switch(level)
         {
-            lvl1();
-        }
-        else if(level == 2)
-        {
-            lvl2();
+            case 1:
+                lvl1();
+                break;
+            case 2:
+                lvl2();
+                break;
+            case 3:
+                lvl3();
+                break;
         }
         //wprepare();
         

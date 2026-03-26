@@ -38,6 +38,8 @@ public class Spieler extends OberklasseSpieler
     private boolean disableFallingWhileDashing = false;
     
     private boolean checkFall = true;
+    
+    private Flagge flagge;
     /**
      * Act - do whatever the Spieler wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -48,7 +50,8 @@ public class Spieler extends OberklasseSpieler
         rechtsLaufen();
         springen();
         sammeln();
-
+        fahnePruefen();
+        
         //Dash
 
         linksDash();
@@ -189,6 +192,7 @@ public class Spieler extends OberklasseSpieler
 
         return coolDownDone;
     }
+    
 
     public Counter getCounter(int i){
         return meineCounter[i];
@@ -212,7 +216,36 @@ public class Spieler extends OberklasseSpieler
             realisiereCounter(2);
         }
     }
-
+    
+    private void fahnePruefen()
+    {
+        Actor flagge = getOneIntersectingObject(Flagge.class);
+        if(flagge != null)
+        {
+            Level.flagge.change();
+        }
+    }
+    
+    private void mitBlock()
+    {
+      // Prüft, ob ein Boden-Block direkt unter dem Spieler ist
+        Actor block = getOneObjectAtOffset(0, getImage().getHeight()/2, Boden.class);
+ 
+        if (block != null) 
+        {
+            // Spieler steht auf einem Block, also soll er mit dem Block mitfahren
+            // Sicherstellen, dass das Objekt auch tatsächlich ein Boden-Block ist
+            if (block instanceof Boden) 
+            {
+                // speed des Blocks abfragen
+                int speed = ((Boden)block).getSpeed();
+ 
+                // Spieler horizontal um die gleiche Geschwindigkeit bewegen wie der Block
+                setLocation(getX() + speed, getY());
+            }
+        }
+    }
+    
     private void sterben()
     {
         if (onTrap() || headHitsTrap()) 

@@ -11,6 +11,7 @@ public class Level extends World
     private int x;
     private Spieler spieler;
     private Nuss nuss;
+    public static Flagge flagge;
     /**
      * Constructor for objects of class Level
      */
@@ -72,11 +73,15 @@ public class Level extends World
 
         Hindernis hindernis = new Hindernis(1);
         addObject(hindernis,400, 280);
-
+        
+        flagge = new Flagge(550,360,2);
+        addObject(flagge, 550, 326);
+        addObject(new Flagge(), 550, 358);
+        
         this.addObject(new Button("LEVEL2","NextLevel",2), 500, 40);
     }
 
-    public void lvl2() //Selma und Milena
+    public void lvl3() //Selma und Milena
     {
         platform(5,0,100);//Startplatform
         platformE(1,128,132);
@@ -134,6 +139,41 @@ public class Level extends World
         nuss(448,80);
         
         nuss(20,137);//2.Plattform
+        
+        flagge = new Flagge(550,360,3);
+        addObject(flagge, 550, 326);
+        addObject(new Flagge(), 550, 358);
+    }
+    
+    public void lvl2() //Milena
+    {
+        platform(5,0,100);//Startplatform
+        platform(2,225,131);
+        platform(2,352,100);
+        platform(2,497,131);
+        platform(4,497,224);//2. Plattform
+        bewegterBoden(350,224,350,432,1);
+        platform(5,150,224);
+        platform(1,64,224);
+ 
+        platform(3,450,340);
+        platformE(3,450,370);
+        //Hindernisse
+        bewegtesHindernis(1,200, 365,200,300,2);
+        hindernis(1,418,365);
+        //Nüsse
+    }
+    
+    /* Erstellt Nüsse für das Spiel
+    */
+ 
+    public void bewegterBoden( int x ,int y, int minX, int maxX, int speed) //Milena
+ 
+    {
+        Boden boden = new Boden(minX,maxX,speed);
+ 
+        addObject(boden, x, y);
+ 
     }
     
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.
@@ -168,7 +208,7 @@ public class Level extends World
     {
         for(int i =0;i < platformlaenge; i++ )
         { 
-            Boden boden =new Boden("erde");
+            Boden boden =new Boden();
 
             addObject(boden,platformstart+ 32*i, platformhoehe);
         }
@@ -186,6 +226,13 @@ public class Level extends World
         addObject(hindernis, x, y);
 
     }
+    
+    public void bewegtesHindernis(int ausrichtung, int x, int y, int minX, int maxX, int speed)//Milena
+    {
+        Hindernis hindernis = new Hindernis(ausrichtung, minX, maxX, speed);
+        addObject(hindernis, x, y);
+    }   
+
 
     /**
      * Prepare the world for the start of the program.

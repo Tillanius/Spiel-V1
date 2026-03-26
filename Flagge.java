@@ -11,14 +11,32 @@ public class Flagge extends Weltblöcke
     private int posX;
     private int posY;
     
-    public Flagge (int posX, int posY)
+    private int level;
+    
+    private static String image;
+    private static final String checkImage = "flagge_unten.png";
+    
+    public Flagge (int posX, int posY, int level)
     {
         super();
-    
+        setImage("flagge_unten.png");
+        image = "flagge_unten.png";
+        this.level = level;
     }
     
-    public void platziereFlagge(int posX,int posY)
+    public Flagge()
     {
-        
+        super();
+        setImage("flaggeStamm.png");
+    }
+    
+    public void change()
+    {
+        if(image == checkImage)
+        {
+            setImage("flagge.png");
+            Greenfoot.delay(20);
+            Greenfoot.setWorld(new Level(level));
+        }
     }
 }

@@ -81,7 +81,7 @@ public class Level extends World
         this.addObject(new Button("LEVEL2","NextLevel",2), 500, 40);
     }
 
-    public void lvl3() //Selma und Milena
+    public void lvl2() //Selma und Milena
     {
         platform(5,0,100);//Startplatform
         platformE(1,128,132);
@@ -145,7 +145,7 @@ public class Level extends World
         addObject(new Flagge(), 550, 358);
     }
     
-    public void lvl2() //Milena
+    public void lvl3() //Milena
     {
         platform(5,0,100);//Startplatform
         platform(2,225,131);

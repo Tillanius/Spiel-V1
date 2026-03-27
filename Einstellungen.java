@@ -24,6 +24,10 @@ public class Einstellungen extends World
         addObject(new Button("Rechts","alligator", 11), 250, 210);
         addObject(new Button("Dash","alligator", 12), 250, 260);
         addObject(new Button("Springen","alligator", 13), 250, 310);
+        
+        addObject(new Button("Musik", "Musik.true"), 400, 160);
+        // addObject(new Button("SoundFX", "alligator"), 400, 210);
+        
         addObject(new Button("Menue","back"), 50, 25);
     }
     

@@ -61,6 +61,7 @@ public class Button extends Actor
                 case "Musik":
                     on = !on;
                     setImage("Musik."+on+".png");
+                    Musik.musikON = on;
                     break;
                 case "SoundFX":
                     on = !on;

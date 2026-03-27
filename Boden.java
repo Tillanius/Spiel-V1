@@ -29,6 +29,11 @@ public class Boden extends Weltblöcke
     {
         setImage("boden.png");
     }
+    
+    public Boden(String erde)
+    {
+        setImage("erde.png");
+    }
  
     //Konstruktor für bewegten Boden
     public Boden(int minX, int maxX, int speed)//Milena

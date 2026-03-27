@@ -12,6 +12,8 @@ public class Musik
     public static GreenfootSound music = new GreenfootSound("MusikV1Pre.mp3");
     private static String musikCheck;
     
+    protected static boolean musikON = true;
+    
     /**
      * Constructor for objects of class Musik
      */
@@ -26,12 +28,15 @@ public class Musik
     
     public static void changeMusik(String musik)
     {
-        if(musik != musikCheck)
+        if(musikON)
         {
-            music.stop();
-            musikCheck = musik;
-            music = new GreenfootSound(musik);
-            music.playLoop();
+            if(musik != musikCheck)
+            {
+                music.stop();
+                musikCheck = musik;
+                music = new GreenfootSound(musik);
+                music.playLoop();
+            }
         }
     }
 }

@@ -20,23 +20,38 @@ public class Hindernis extends Boden
         }
     }
  
-    public Hindernis(int richtung)
+    public Hindernis(int richtung) //Jakob
     {
         super();
-        if(richtung == 1)
+        switch(richtung)
         {
-            setImage("spikes.png");
+            case 1:
+                setImage("spikes.png");
+                break;
+            case 2:
+                setImage("spikes180.png");
+                break;
+            case 3:
+                setImage("spikescon.png");
+                break;
+            case 4:
+                setImage("spikes180con.png");
+                break;
+                
+            default:
+                setImage("spikes.png");
+                break;
         }
-        else
-        {
-            setImage("spikes180.png");
-        }
+        
+        GreenfootImage image = getImage();
+        image.scale(32,19);
+        setImage(image);
     }
  
     //NEUER Konstruktor für bewegliche Hindernisse
     public Hindernis(int richtung, int minX, int maxX, int speed)//Milena
     {
-        this(richtung); // nutzt deinen bestehenden Konstruktor
+        this(richtung); // nutzt den bestehenden Konstruktor
         this.minX = minX;
         this.maxX = maxX;
         this.speed = speed;

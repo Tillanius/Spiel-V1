@@ -365,7 +365,7 @@ public class Spieler extends OberklasseSpieler
                 vSpeed=pixel()+4;
                 fall();
             }
-            time = 28;
+            time = 22;
             checkFall = true;
         }
     }

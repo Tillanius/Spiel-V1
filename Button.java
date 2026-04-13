@@ -61,7 +61,8 @@ public class Button extends Actor
                 case "Musik":
                     on = !on;
                     setImage("Musik."+on+".png");
-                    Musik.musikON = on;
+                    Musik3.musikON = on;
+                    musicOnOff();
                     break;
                 case "SoundFX": 
                     on = !on;
@@ -95,6 +96,18 @@ public class Button extends Actor
         if(Greenfoot.mouseClicked(this))
         {
             fuehreAktionDurch();
+        }
+    }
+    
+    private void musicOnOff()
+    {
+        if(Musik3.musikON)
+        {
+            Musik3.changeMusik("MusikV1Pre.mp3");
+        }
+        else
+        {
+            Musik3.music.stop();
         }
     }
 }

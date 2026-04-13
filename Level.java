@@ -34,15 +34,15 @@ public class Level extends World
         {
             case 1:
                 lvl1();
-                Musik.changeMusik("MusikV1.mp3");
+                Musik3.changeMusik("MusikV1.mp3");
                 break;
             case 2:
                 lvl2();
-                Musik.changeMusik("MusikV1_2.mp3"); //Damit die Musik neu startet
+                Musik3.changeMusik("MusikV1_2.mp3"); //Damit die Musik neu startet
                 break;
             case 3:
                 lvl3();
-                Musik.changeMusik("MusikV1.mp3");
+                Musik3.changeMusik("MusikV1.mp3");
                 break;
             case 4:
                 Greenfoot.setWorld(new Credits());

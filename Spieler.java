@@ -17,7 +17,7 @@ public class Spieler extends OberklasseSpieler
     private int waitTime = 30;
     private int coolDownCounter = waitTime; //Wie viele frames der Cooldown lang sein soll
     private boolean doCoolDown; //Variable, damit der Spieler weiß, ob er den Cooldown machen muss
-
+    private int jump;
     private final int dashSpeed = 15; // Wie schnell der Spieler den Dash macht
 
     private final int speed = 6; //Laufgeschwindigkeit
@@ -31,17 +31,17 @@ public class Spieler extends OberklasseSpieler
     private String tasteRechts = "d";
     private String tasteSprung = "w";
     private String tasteDash = "shift";
-    
+
     //Countervariablen
     public Counter[] meineCounter = new Counter[4];
     int zeit = 0; //Im Level verbrachte Zeit
 
     private boolean disableFallingWhileDashing = false;
-    
+
     private boolean checkFall = true;
-    
+
     private Flagge flagge;
-    
+
     /**
      * Act - do whatever the Spieler wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -53,7 +53,7 @@ public class Spieler extends OberklasseSpieler
         springen();
         sammeln();
         flaggePruefen();
-        
+
         //Dash
 
         linksDash();
@@ -63,13 +63,9 @@ public class Spieler extends OberklasseSpieler
 
         //schwerkraft
         checkFall();
-        
+
         //mit bewegtem Block bewegen
         mitBlock();
-        
-        //Touch
-        flaggeBeruehren();
-
         //Zeit zwischen den Sprüngen vergeht, damit keine Fehler entstehen
         if (time > 0)
         {
@@ -89,7 +85,6 @@ public class Spieler extends OberklasseSpieler
         }
     }
 
-    
     
     public Spieler(int posX, int posY, int level)
     {
@@ -200,7 +195,6 @@ public class Spieler extends OberklasseSpieler
 
         return coolDownDone;
     }
-    
 
     public Counter getCounter(int i){
         return meineCounter[i];
@@ -224,7 +218,7 @@ public class Spieler extends OberklasseSpieler
             realisiereCounter(2);
         }
     }
-    
+
     private void flaggePruefen()
     {
         Actor flagge = getOneIntersectingObject(Flagge.class);
@@ -233,12 +227,12 @@ public class Spieler extends OberklasseSpieler
             Level.flagge.change();
         }
     }
-    
+
     private void mitBlock()
     {
-      // Prüft, ob ein Boden-Block direkt unter dem Spieler ist
+        // Prüft, ob ein Boden-Block direkt unter dem Spieler ist
         Actor block = getOneObjectAtOffset(0, getImage().getHeight()/2, Boden.class);
- 
+
         if (block != null) 
         {
             // Spieler steht auf einem Block, also soll er mit dem Block mitfahren
@@ -247,13 +241,13 @@ public class Spieler extends OberklasseSpieler
             {
                 // speed des Blocks abfragen
                 int speed = ((Boden)block).getSpeed();
- 
+
                 // Spieler horizontal um die gleiche Geschwindigkeit bewegen wie der Block
                 setLocation(getX() + speed, getY());
             }
         }
     }
-    
+
     private void sterben()
     {
         if (onTrap() || headHitsTrap()) 
@@ -269,18 +263,10 @@ public class Spieler extends OberklasseSpieler
         return false;
     }
 
-    public void flaggeBeruehren()
-    {
-        if(this.isTouching(Flagge.class))
-        {
-          Greenfoot.setWorld(new Level(2));
-        }
-    }
-    
-    public boolean headHitsGround()
+    public boolean headHitsGround(int a)
     {
         //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
-        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +3, Boden.class);
+        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +a, Boden.class);
         return above != null;
     }
 
@@ -301,7 +287,6 @@ public class Spieler extends OberklasseSpieler
         return under != null;
     }
 
-    
     /**
      *  Überprüft ob der Spieler den Boden berührt
      */
@@ -311,6 +296,20 @@ public class Spieler extends OberklasseSpieler
         Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 2, Boden.class);
         return under != null;
     }
+    
+    private int pixel()
+    {
+        int a = vSpeed;
+        while (a<0)
+        {
+            if(!headHitsGround(a))
+            {
+                return a;
+            }
+            a++;
+        }
+        return 0;
+    }
 
     /**
      *  Änderung in y-Richtung
@@ -319,7 +318,7 @@ public class Spieler extends OberklasseSpieler
     { 
         if(!disableFallingWhileDashing)
         {
-            setLocation (getX(), getY() + vSpeed); 
+                setLocation (getX(), getY() + vSpeed); 
             sterben(); 
             vSpeed += acceleration; 
         }
@@ -353,11 +352,19 @@ public class Spieler extends OberklasseSpieler
 
     private void springen()
     {
-        if(Greenfoot.isKeyDown(tasteSprung) && onGround() && time == 0 && !headHitsGround())
+        if(Greenfoot.isKeyDown(tasteSprung) && onGround() && time == 0 && !headHitsGround(3))
         {
             vSpeed = -sprunghöhe;
             sterben();
-            fall();
+            if(!headHitsGround(vSpeed-1))
+            {
+                fall();
+            }
+            else
+            {
+                vSpeed=pixel()+4;
+                fall();
+            }
             time = 28;
             checkFall = true;
         }

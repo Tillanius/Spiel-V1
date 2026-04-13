@@ -21,6 +21,9 @@ public class Credits extends World
         setScene();
         
         this.addObject(new Button("Menue","back"), 50, 25);
+        
+        
+        
     }
     
     private void setScene()
@@ -31,6 +34,16 @@ public class Credits extends World
         setBackground(img); //Weist Hintergrund Bild zu
         img.setColor(new Color(78,181,78)); //Schriftfarbe
         img.setFont(new Font("Arial",true,false,66));//Einstellungen für Schrift
-        img.drawString("Credits", 180 ,120); //Menüüberschrift wird erstellt#
+        img.drawString("Credits", 180 ,100); //Menüüberschrift wird erstellt#
+        img.setFont(new Font("Arial",true,false,33));//Einstellungen für Schrift
+        img.drawString("Credits gehen an:",160,150);
+        img.setFont(new Font("Arial",true,false,27));//Einstellungen für Schrift
+        img.drawString("Adonai Gonzales",40,200);
+        img.drawString("Till Kruse",40,250);
+        img.drawString("Henri Bartolomäus",40,300);
+        img.drawString("David Noske",40,350);
+        img.drawString("Jakob Kringel",340,200);
+        img.drawString("Selma Korb",340,250);
+        img.drawString("Milena Kvasnicka",340,300);
     }
 }

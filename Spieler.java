@@ -13,7 +13,7 @@ public class Spieler extends OberklasseSpieler
     public int nuesse;
     public int muenzen;
     private Level level;
-    
+
     private int waitTime = 30;
     private int coolDownCounter = waitTime; //Wie viele frames der Cooldown lang sein soll
     private boolean doCoolDown; //Variable, damit der Spieler weiß, ob er den Cooldown machen muss
@@ -63,6 +63,9 @@ public class Spieler extends OberklasseSpieler
 
         //schwerkraft
         checkFall();
+        
+        //mit bewegtem Block bewegen
+        mitBlock();
         
         //Touch
         flaggeBeruehren();

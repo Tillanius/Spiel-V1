@@ -12,7 +12,8 @@ public class Spieler extends OberklasseSpieler
     private int posY;
     public int nuesse;
     public int muenzen;
-
+    private Level level;
+    
     private int waitTime = 30;
     private int coolDownCounter = waitTime; //Wie viele frames der Cooldown lang sein soll
     private boolean doCoolDown; //Variable, damit der Spieler weiß, ob er den Cooldown machen muss
@@ -62,6 +63,9 @@ public class Spieler extends OberklasseSpieler
 
         //schwerkraft
         checkFall();
+        
+        //Touch
+        flaggeBeruehren();
 
         //Zeit zwischen den Sprüngen vergeht, damit keine Fehler entstehen
         if (time > 0)
@@ -262,6 +266,14 @@ public class Spieler extends OberklasseSpieler
         return false;
     }
 
+    public void flaggeBeruehren()
+    {
+        if(this.isTouching(Flagge.class))
+        {
+          Greenfoot.setWorld(new Level(2));
+        }
+    }
+    
     public boolean headHitsGround()
     {
         //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist

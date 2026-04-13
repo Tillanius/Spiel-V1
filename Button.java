@@ -12,7 +12,8 @@ public class Button extends Actor
     private String text;
     
     private int indexNumber;
-
+    
+    private boolean on = true;
     /**
      * Constructor for objects of class Button
      */
@@ -42,7 +43,7 @@ public class Button extends Actor
     }
 
     private void fuehreAktionDurch(){
-        /* Jakob: Methode, welche den Buttons die richtige Welt hervorrufen lässt
+         //Jakob: Methode, welche den Buttons die richtige Welt hervorrufen lässt
         switch(text)
             {
                 case "START":
@@ -57,39 +58,36 @@ public class Button extends Actor
                 case "Credits":
                     Greenfoot.setWorld(new Credits());
                     break; 
-                default: Greenfoot.setWorld(new MenueWorld());
+                case "Musik":
+                    on = !on;
+                    setImage("Musik."+on+".png");
+                    Musik.musikON = on;
                     break;
-            }
-        */
-        switch(indexNumber) //Adonai: den Buttons wird ein Index gegeben
-            {
-                case 1:
-                    Greenfoot.setWorld(new Level(1));
-                    break;                
-                case 2:
-                    Greenfoot.setWorld(new Level(2));
-                    break; 
-                case 3:
-                    Greenfoot.setWorld(new Einstellungen());
-                    break; 
-                case 4:
-                    Greenfoot.setWorld(new Credits());
-                    break; 
-                case 10:
-                    Greenfoot.setWorld(new Tasteneinstellung(0));
+                case "SoundFX":
+                    on = !on;
+                    setImage("Sound."+on+".png");
                     break;
-                case 11:
-                    Greenfoot.setWorld(new Tasteneinstellung(1));
-                    break;
-                case 12:
+                    
+                default: switch(indexNumber) //Adonai: den Buttons wird ein Index gegeben
+                {
+                    case 10:
+                        Greenfoot.setWorld(new Tasteneinstellung(0));
+                        break;
+                    case 11:
+                        Greenfoot.setWorld(new Tasteneinstellung(1));
+                        break;
+                    case 12:
                     Greenfoot.setWorld(new Tasteneinstellung(2));
-                    break;
-                case 13:
-                    Greenfoot.setWorld(new Tasteneinstellung(3));
-                    break;
-                default: Greenfoot.setWorld(new MenueWorld());
-                    break;
+                        break;
+                    case 13:
+                        Greenfoot.setWorld(new Tasteneinstellung(3));
+                        break;
+                    default: Greenfoot.setWorld(new MenueWorld());
+                        break;
+                }
+                break;
             }
+        
     } 
     
     public void act()

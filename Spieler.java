@@ -39,6 +39,9 @@ public class Spieler extends OberklasseSpieler
     private boolean disableFallingWhileDashing = false;
     
     private boolean checkFall = true;
+    
+    private Flagge flagge;
+    
     /**
      * Act - do whatever the Spieler wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -49,7 +52,8 @@ public class Spieler extends OberklasseSpieler
         rechtsLaufen();
         springen();
         sammeln();
-
+        flaggePruefen();
+        
         //Dash
 
         linksDash();
@@ -84,7 +88,7 @@ public class Spieler extends OberklasseSpieler
 
     
     
-    public Spieler(int posX, int posY)
+    public Spieler(int posX, int posY, int level)
     {
         this.posX = posX;
         this.posY = posY;
@@ -93,10 +97,10 @@ public class Spieler extends OberklasseSpieler
 
         setImage("Knight_flipped.png");
 
-        meineCounter[0] = new Counter("Tode: ");
-        meineCounter[1] = new Counter("Punkte: ");
-        meineCounter[2] = new Counter("Nüsse: ");
-        meineCounter[3] = new Counter("Zeit: ");
+        meineCounter[0] = new Counter("Tode: ", level);
+        meineCounter[1] = new Counter("Punkte: ", level);
+        meineCounter[2] = new Counter("Nüsse: ", level);
+        meineCounter[3] = new Counter("Zeit: ", level);
     }
 
     private void linksLaufen()
@@ -193,6 +197,7 @@ public class Spieler extends OberklasseSpieler
 
         return coolDownDone;
     }
+    
 
     public Counter getCounter(int i){
         return meineCounter[i];
@@ -216,7 +221,36 @@ public class Spieler extends OberklasseSpieler
             realisiereCounter(2);
         }
     }
-
+    
+    private void flaggePruefen()
+    {
+        Actor flagge = getOneIntersectingObject(Flagge.class);
+        if(flagge != null)
+        {
+            Level.flagge.change();
+        }
+    }
+    
+    private void mitBlock()
+    {
+      // Prüft, ob ein Boden-Block direkt unter dem Spieler ist
+        Actor block = getOneObjectAtOffset(0, getImage().getHeight()/2, Boden.class);
+ 
+        if (block != null) 
+        {
+            // Spieler steht auf einem Block, also soll er mit dem Block mitfahren
+            // Sicherstellen, dass das Objekt auch tatsächlich ein Boden-Block ist
+            if (block instanceof Boden) 
+            {
+                // speed des Blocks abfragen
+                int speed = ((Boden)block).getSpeed();
+ 
+                // Spieler horizontal um die gleiche Geschwindigkeit bewegen wie der Block
+                setLocation(getX() + speed, getY());
+            }
+        }
+    }
+    
     private void sterben()
     {
         if (onTrap() || headHitsTrap()) 
@@ -243,7 +277,7 @@ public class Spieler extends OberklasseSpieler
     public boolean headHitsGround()
     {
         //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
-        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +3, Bodencheck.class);
+        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +3, Boden.class);
         return above != null;
     }
 
@@ -260,7 +294,7 @@ public class Spieler extends OberklasseSpieler
     public boolean onTrap()
     {
         //Am unteren Ende des Spielers wird überprüft ob eine Falle berührt wird.
-        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 4, Hindernis.class);
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2, Hindernis.class);
         return under != null;
     }
 

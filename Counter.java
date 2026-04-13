@@ -17,6 +17,8 @@ public class Counter extends Actor
     private int value = 0;
     private String text;
     
+    private int level;
+    
     /**
      * Act - do whatever the Counter wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,14 +28,15 @@ public class Counter extends Actor
         // Add your action code here.
     }
     
-    public Counter(String prefix){
+    public Counter(String prefix, int level){
         this.text = prefix;
+        this.level = level;
         
         int width = (this.text.length() + 2) * 10; //Länge des Bildes wird festgelegt, abhängig von der Textlänge
         setImage(new GreenfootImage(width, HEIGHT)); //Größe des Bildes wird vorgegeben
         GreenfootImage image = getImage(); //Bild wird gesucht
         image.setColor(TEXT_COLOR);
-        if(text=="Nüsse: ")
+        if(text=="Nüsse: ") //Selma und Milena
         {
             updateImageNuesse(); //Bild für Nusscounter wird eingefügt
         }
@@ -45,7 +48,14 @@ public class Counter extends Actor
     
     public void add(int score){
         value = value + score;
-        updateImage();
+        if(text=="Nüsse: ") //Selma und Milena
+        {
+            updateImageNuesse(); //Bild für Nusscounter wird eingefügt
+        }
+        else
+        {
+            updateImage(); //Bild wird eingefügt
+        }
     }
     
     private void updateImage() {
@@ -55,8 +65,22 @@ public class Counter extends Actor
     }
     
     private void updateImageNuesse() {
+        String nuesseImLevel = "";
+        if(level == 1)
+        {
+            nuesseImLevel = " / 1";
+        }
+        else if(level == 2)
+        {
+            nuesseImLevel = " / 5";
+        }
+        else if(level == 3)
+        {
+            nuesseImLevel = " / 3";
+        }
+        
         GreenfootImage image = getImage();
         image.clear();
-        image.drawString(text + value + " / 5", PADDING_X, BASELINE_Y);
+        image.drawString(text + value + nuesseImLevel, PADDING_X, BASELINE_Y);
     }
 }

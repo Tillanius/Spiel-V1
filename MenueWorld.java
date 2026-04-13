@@ -20,9 +20,10 @@ public class MenueWorld extends World
         setBackgroundColor(); //Weist Feld Hintergrund zu
         
         //Alle Menübuttons werden erstellt
-        this.addObject(new Button("START","alligator", 1), 300, 200);
-        this.addObject(new Button("Settings","settings", 3), 300, 250);
-        this.addObject(new Button("Credits","credits", 4), 300, 300);
+        this.addObject(new Button("START","alligator"), 300, 200);
+        this.addObject(new Button("Settings","settings"), 300, 250);
+        this.addObject(new Button("Credits","credits"), 300, 300);
+        Musik.changeMusik("MusikV1Pre.mp3");
     }
     
     private void setBackgroundColor()
@@ -59,5 +60,10 @@ public class MenueWorld extends World
         addObject(bodencheck, 32*dauer, plaformhoehe);
      }
 
+    }
+    
+    public void act()
+    {
+        
     }
 }

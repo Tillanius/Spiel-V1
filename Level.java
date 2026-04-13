@@ -38,7 +38,7 @@ public class Level extends World
                 break;
             case 2:
                 lvl2();
-                Musik3.changeMusik("MusikV1_2.mp3"); //Damit die Musik neu startet
+                Musik3.changeMusik("MusikV1.mp3"); //Damit die Musik neu startet
                 break;
             case 3:
                 lvl3();

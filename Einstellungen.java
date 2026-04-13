@@ -28,7 +28,7 @@ public class Einstellungen extends World
         addObject(new Button("Musik", "Musik.true"), 400, 160);
         // addObject(new Button("SoundFX", "alligator"), 400, 210);
         
-        addObject(new Button("Menue","back"), 50, 25);
+        addObject(new Button("Menue","back"), 52, 25);
     }
     
     private void setScene()

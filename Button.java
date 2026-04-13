@@ -108,7 +108,7 @@ public class Button extends Actor
         else
         {
             Musik3.changeMusik("MusikV1.mp3");
-            Musik3.music.stop();
+            Musik3.music.pause();
         }
     }
 }

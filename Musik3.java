@@ -28,8 +28,8 @@ public class Musik3 //Jakob
             if(musik != musikCheck)
             {
                 music.stop();
-                musikCheck = musik;
                 music = new GreenfootSound(musik);
+                musikCheck = musik;
                 music.playLoop();
             }
         }

@@ -216,6 +216,7 @@ public class Spieler extends OberklasseSpieler
         {
             getWorld().removeObject(nuss);
             realisiereCounter(2);
+            Greenfoot.playSound("Münze.mp3");
         }
     }
 
@@ -225,6 +226,7 @@ public class Spieler extends OberklasseSpieler
         if(flagge != null)
         {
             Level.flagge.change();
+            Greenfoot.playSound("Flagge.mp3");
         }
     }
 
@@ -254,6 +256,8 @@ public class Spieler extends OberklasseSpieler
         {
             realisiereCounter(0);
             setLocation(posX, posY-30);
+            Greenfoot.playSound("tot.mp3");
+            
         }
     }
 

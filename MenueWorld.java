@@ -24,6 +24,7 @@ public class MenueWorld extends World
         this.addObject(new Button("Settings","settings"), 300, 250);
         this.addObject(new Button("Credits","credits"), 300, 300);
         Musik3.changeMusik("MusikV1Pre.mp3");
+        
     }
     
     private void setBackgroundColor()

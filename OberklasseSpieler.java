@@ -51,7 +51,7 @@ public class OberklasseSpieler extends Actor
         case OST:
             x++;
             break;
-        case NORD:
+        case NORD: 
             y--;
             break;
         case WEST:

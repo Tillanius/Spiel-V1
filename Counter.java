@@ -83,4 +83,9 @@ public class Counter extends Actor
         image.clear();
         image.drawString(text + value + nuesseImLevel, PADDING_X, BASELINE_Y);
     }
+    
+    protected int getValue()
+    {
+        return value;
+    }
 }

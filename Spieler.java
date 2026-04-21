@@ -26,7 +26,9 @@ public class Spieler extends OberklasseSpieler
     private int vSpeed = 0; //Aktuelle vertikale Geschwindigkeit des Spielers
 
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
-
+    
+    private static int finalTime = 0;
+    
     private String tasteLinks = "a";
     private String tasteRechts = "d";
     private String tasteSprung = "w";
@@ -55,9 +57,7 @@ public class Spieler extends OberklasseSpieler
         flaggePruefen();
 
         //Dash
-
         linksDash();
-        //linksDash2();
         rechtsDash();
         coolDown();
 
@@ -201,9 +201,19 @@ public class Spieler extends OberklasseSpieler
         return coolDownDone;
     }
     
+    
     //Counter
     public Counter getCounter(int i){
         return meineCounter[i];
+    }
+    
+    public int getCounterValue(int i){
+        int x = 0;
+        for(int y = meineCounter[i].getValue(); y > 0; y--)
+        {
+            x++;
+        }
+        return x;
     }
     
     /**
@@ -212,6 +222,14 @@ public class Spieler extends OberklasseSpieler
     private void realisiereCounter(int n){
         meineCounter[n].add(1);
     }
+    
+    /**
+     * Erhöhe Zahl im Counter n um 1.
+     */
+    public void realisiereCounter(int n, int x){
+        meineCounter[n].add(x);
+    }
+    
     
     //Berührt der Spieler...
     /**
@@ -237,6 +255,7 @@ public class Spieler extends OberklasseSpieler
         Actor flagge = getOneIntersectingObject(Flagge.class);
         if(flagge != null)
         {
+            finalTime = finalTime + getCounterValue(4);
             Level.flagge.change();
             Greenfoot.playSound("Flagge.mp3");
         }
@@ -333,5 +352,9 @@ public class Spieler extends OberklasseSpieler
             checkFall = true;
         }
     }
-
+    
+    public int gibFinaleZeit()
+    {
+        return finalTime;
+    }
 }

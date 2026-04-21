@@ -43,7 +43,8 @@ public class Tasteneinstellung extends World
         img.drawString("für die Akion", 10,160);//Menüüberschrift wird erstellt
     }
     
-    private void stelleEin(int l){
+    private void stelleEin(int l)
+    {
         String key = Greenfoot.getKey();
             if (key != null) {
                 pressedKey = key;

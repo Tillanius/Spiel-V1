@@ -49,22 +49,13 @@ public class MenueWorld extends World
     public void platform(int platformlange, int platformstart ,int plaformhoehe)
 
     {
-
      for(int dauer =platformstart;dauer < platformlange; dauer++ )
 
      { 
 
-        Bodencheck bodencheck = new Bodencheck();
-            Boden boden =new Boden();
-
-        addObject(boden, 32*dauer, plaformhoehe);
-        addObject(bodencheck, 32*dauer, plaformhoehe);
-     }
-
-    }
-    
-    public void act()
-    {
         
+            Boden boden =new Boden();
+        addObject(boden, 32*dauer, plaformhoehe);
+     }
     }
 }

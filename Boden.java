@@ -8,9 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 */
 public class Boden extends Weltblöcke
 {
-    private int speed = 0;
-    private int minX, maxX;
-    private boolean bewegt = false;
+    protected int speed = 0;
+    protected int minX, maxX;
+    protected boolean bewegt = false;
  
     /**
      * Act - do whatever the Boden wants to do. This method is called whenever
@@ -52,7 +52,7 @@ public class Boden extends Weltblöcke
     }
  
     //Methoden
-    private void bewegen() //Milena
+    protected void bewegen() //Milena
     {
         // setLocation() verschiebt das Objekt in der Welt auf neue Koordinaten.
         // getX() = aktuelle X-Position, getY() = aktuelle Y-Position

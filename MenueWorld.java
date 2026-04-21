@@ -24,6 +24,7 @@ public class MenueWorld extends World
         this.addObject(new Button("Settings","settings"), 300, 250);
         this.addObject(new Button("Credits","credits"), 300, 300);
         Musik3.changeMusik("MusikV1Pre.mp3");
+        
     }
     
     private void setBackgroundColor()
@@ -48,22 +49,13 @@ public class MenueWorld extends World
     public void platform(int platformlange, int platformstart ,int plaformhoehe)
 
     {
-
      for(int dauer =platformstart;dauer < platformlange; dauer++ )
 
      { 
 
-        Bodencheck bodencheck = new Bodencheck();
-            Boden boden =new Boden();
-
-        addObject(boden, 32*dauer, plaformhoehe);
-        addObject(bodencheck, 32*dauer, plaformhoehe);
-     }
-
-    }
-    
-    public void act()
-    {
         
+            Boden boden =new Boden();
+        addObject(boden, 32*dauer, plaformhoehe);
+     }
     }
 }

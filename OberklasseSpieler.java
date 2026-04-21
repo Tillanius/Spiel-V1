@@ -39,6 +39,7 @@ public class OberklasseSpieler extends Actor
         // Add your action code here.
     }
     
+    //Bewegung
     public boolean vornFrei() {
         // return true;
         
@@ -65,5 +66,62 @@ public class OberklasseSpieler extends Actor
         }
     
         return getWorld().getObjectsAt(x, y, Boden.class).size() == 0;
+    }
+    
+    //Berührt der Spieler...
+    //... eine Falle
+    protected boolean headHitsTrap()
+    {
+        //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
+        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +3, Hindernis.class);
+        return above != null;
+    }
+    
+    /**
+     *  Überprüft ob der Spieler eine Falle berührt
+     */
+    protected boolean onTrap()
+    {
+        //Am unteren Ende des Spielers wird überprüft ob eine Falle berührt wird.
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2, Hindernis.class);
+        return under != null;
+    }
+
+    //... den Boden   
+        protected boolean headHitsGround(int a)
+    {
+        //Über dem Spieler wird geprüft, ob ein Bodenobjekt ist
+        Object above = getOneObjectAtOffset(0, -getImage().getHeight()/2 +a, Boden.class);
+        return above != null;
+    }
+    
+    /**
+     *  Überprüft ob der Spieler den Boden berührt
+     */
+    protected boolean onGround()
+    {
+        //Am unteren Ende des Spielers wird überprüft ob der den Boden berührt.
+        Object under = getOneObjectAtOffset(0, getImage().getHeight()/2 - 2, Boden.class);
+        return under != null;
+    }
+    
+    protected void mitBlock()
+    {
+        // Prüft, ob ein Boden-Block direkt unter dem Spieler ist
+        Actor block = getOneObjectAtOffset(0, getImage().getHeight()/2, Boden.class);
+
+        if (block != null) 
+        {
+            // Spieler steht auf einem Block, also soll er mit dem Block mitfahren
+            // Sicherstellen, dass das Objekt auch tatsächlich ein Boden-Block ist
+            if (block instanceof Boden) 
+            {
+                // speed des Blocks abfragen
+                int speed = ((Boden)block).getSpeed();
+
+                // Spieler horizontal um die gleiche Geschwindigkeit bewegen wie der Block
+                setLocation(getX() + speed, getY());
+            }
+        }
     }
 }

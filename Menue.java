@@ -15,7 +15,6 @@ public class Menue extends Actor
     public Menue(String [] textArray)
     {
         buttonText = textArray;
-
     }
 
     

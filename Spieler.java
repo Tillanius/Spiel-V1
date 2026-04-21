@@ -26,16 +26,16 @@ public class Spieler extends OberklasseSpieler
     private int vSpeed = 0; //Aktuelle vertikale Geschwindigkeit des Spielers
 
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
-    
+
     private static int finalTode = 0;
     private static int finalPunkte = 0;
     private static int finalNuesse = 0;
     private static int finalTime = 0;
-    
-    private String tasteLinks = "a";
-    private String tasteRechts = "d";
-    private String tasteSprung = "w";
-    private String tasteDash = "shift";
+
+    private String tasteLinks;
+    private String tasteRechts ;
+    private String tasteSprung;
+    private String tasteDash;
 
     //Countervariablen
     public Counter[] meineCounter = new Counter[4];
@@ -88,13 +88,16 @@ public class Spieler extends OberklasseSpieler
         }
     }
 
-    
     public Spieler(int posX, int posY, int level)
     {
         this.posX = posX;
         this.posY = posY;
         muenzen = 0;
         nuesse = 0;
+        String tasteLinks = "a";
+        String tasteRechts = "d";
+        String tasteSprung = "w";
+        String tasteDash = "shift";
 
         setImage("Knight_flipped.png");
 
@@ -151,7 +154,6 @@ public class Spieler extends OberklasseSpieler
         }
     }
 
-    
     private void linksDash()
     {
         if(Greenfoot.isKeyDown(tasteLinks) && Greenfoot.isKeyDown(tasteDash) && vornFrei() && coolDown() == true)
@@ -181,7 +183,7 @@ public class Spieler extends OberklasseSpieler
             disableFallingWhileDashing = false;
         }
     }
-    
+
     /**
      * Ein Cooldown, damit man warten muss, bevor man wieder dashen kann.
      */
@@ -203,13 +205,12 @@ public class Spieler extends OberklasseSpieler
 
         return coolDownDone;
     }
-    
-    
+
     //Counter
     public Counter getCounter(int i){
         return meineCounter[i];
     }
-    
+
     public int getCounterValue(int i){
         int x = 0;
         for(int y = meineCounter[i].getValue(); y > 0; y--)
@@ -218,22 +219,21 @@ public class Spieler extends OberklasseSpieler
         }
         return x;
     }
-    
+
     /**
      * Erhöhe Zahl im Counter n um 1.
      */
     private void realisiereCounter(int n){
         meineCounter[n].add(1);
     }
-    
+
     /**
      * Erhöhe Zahl im Counter n um 1.
      */
     public void realisiereCounter(int n, int x){
         meineCounter[n].add(x);
     }
-    
-    
+
     //Berührt der Spieler...
     /**
      *  Wenn der Spieler eine Nuss berührt, wird diese Eingesammelt.
@@ -248,7 +248,7 @@ public class Spieler extends OberklasseSpieler
             Greenfoot.playSound("Münze.mp3");
         }
     }
-    
+
     /**
      * Überprüft, ob der Spieler eine Flagge berührt.
      * Wenn ja, dann wird das neue Level aufgerufen.
@@ -262,7 +262,7 @@ public class Spieler extends OberklasseSpieler
             finalPunkte = finalPunkte + getCounterValue(1);
             finalNuesse = finalNuesse + getCounterValue(2);
             finalTime = finalTime + getCounterValue(3);
-            
+
             Level.flagge.change();
             Greenfoot.playSound("Flagge.mp3");
         }
@@ -282,7 +282,6 @@ public class Spieler extends OberklasseSpieler
         }
     }
 
-    
     private int pixel()
     {
         int a = vSpeed;
@@ -305,7 +304,7 @@ public class Spieler extends OberklasseSpieler
     { 
         if(!disableFallingWhileDashing)
         {
-                setLocation (getX(), getY() + vSpeed); 
+            setLocation (getX(), getY() + vSpeed); 
             sterben(); 
             vSpeed += acceleration; 
         }
@@ -359,7 +358,7 @@ public class Spieler extends OberklasseSpieler
             checkFall = true;
         }
     }
-    
+
     public int gibFinaleZeit()
     {
         return finalTime;

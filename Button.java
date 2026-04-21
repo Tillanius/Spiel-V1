@@ -100,15 +100,17 @@ public class Button extends Actor
     }
     
     private void musicOnOff()
+{
+    Musik3.musikON = !Musik3.musikON;
+
+    if(Musik3.musikON)
     {
-        if(Musik3.musikON)
-        {
-            Musik3.changeMusik("MusikV1Pre.mp3");
-        }
-        else
-        {
-            Musik3.changeMusik("MusikV1.mp3");
-            Musik3.music.pause();
-        }
+        Musik3.music.pause();
     }
+    else
+    {
+        
+        Musik3.music.playLoop();
+    }
+}
 }

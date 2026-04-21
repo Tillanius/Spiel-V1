@@ -43,38 +43,61 @@ public class Tasteneinstellung extends World
         img.drawString("für die Akion", 10,160);//Menüüberschrift wird erstellt
     }
     
-    private void stelleEin(int l){
+    
+    
+    
+    private void fuehreAktionDurch(){
         String key = Greenfoot.getKey();
             if (key != null) {
                 pressedKey = key;
                 System.out.println("New key: " + key);
                 Greenfoot.setWorld(new Einstellungen());
             }
-    }
-    
-    
-    private void fuehreAktionDurch(){
         switch(einstellung)
         {
             case 0:
-                stelleEin(0);
+                Taste.links = key;
                 break;
             case 1:
-                stelleEin(1);
+                Taste.rechts = key;
                 break;
             case 2:
-                stelleEin(2);
+                Taste.dash = key;
                 break;
             case 3:
-                stelleEin(3);
+                Taste.springen = key;
                 break;
         }
-        
+        Greenfoot.setWorld(new Einstellungen());
         
         
     }
     
     public void act(){
-        fuehreAktionDurch();
+        
+        String key = Greenfoot.getKey();
+            if (key != null) {
+                pressedKey = key;
+                System.out.println("New key: " + key);
+                Greenfoot.setWorld(new Einstellungen());
+            }
+        switch(einstellung)
+        {
+            case 0:
+                Taste.links = key;
+                break;
+            case 1:
+                Taste.rechts = key;
+                break;
+            case 2:
+                Taste.dash = key;
+                break;
+            case 3:
+                Taste.springen = key;
+                break;
+        }
+        Greenfoot.setWorld(new Einstellungen());
+        
+        
     }
 }

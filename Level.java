@@ -12,7 +12,7 @@ public class Level extends World
     private Spieler spieler;
     private Nuss nuss;
     public static Flagge flagge;
-    
+
     /**
      * Constructor for objects of class Level
      */
@@ -27,7 +27,7 @@ public class Level extends World
         for(int i=0; i<4; i++){
             addObject(spieler.getCounter(i), 50, 10+12*i); //Anzeigen werden in 12 pixel Intervallen geladen nacheinander
         }
-        
+
         boden();
 
         switch(level)
@@ -45,7 +45,8 @@ public class Level extends World
                 Musik3.changeMusik("MusikV1.mp3");
                 break;
             case 4:
-                Greenfoot.setWorld(new Credits());
+                lvl4();
+                Musik3.changeMusik("MusikV1.mp3");
                 break;
         }
         //wprepare();
@@ -62,20 +63,21 @@ public class Level extends World
 
     private void lvl1()
     {
+        
         addObject(new Boden(), 200, 285);
         addObject(new Boden("Erde"), 200, 317);
 
         addObject(new Boden(), 400, 285);
         addObject(new Boden("Erde"), 400, 317);
-        
+
         addObject(new Boden(), 300, 332);
         addObject(new Boden("Erde"), 300, 364);
         addObject(new Boden("Erde"), 300, 396);
-        
+
         addObject(new Hindernis(1), 400, 260);
-        
+
         nuss(200,250);
-        
+
         flagge = new Flagge(550, 326, 2); //wichtig, damit der Spieler change() aufrufen kann
         addObject(flagge, 550, 326);
         addObject(new Flagge(), 550, 358); //Der untere Mast der Flagge
@@ -100,7 +102,7 @@ public class Level extends World
         platformE(2,512,162);
         platformE(2,224,162);
         platformE(2,352,162);
-        
+
         //spikes Reihe1
         hindernis(3,160,137);
         hindernis(3,192,137);
@@ -116,115 +118,179 @@ public class Level extends World
         platformE(1,50,270);
         platformE(1,50,239);
         platform(1,50,208);
-        
+
         //spikes Reihe2
         hindernis(1,512,245);
         hindernis(2,447,187);
-        
+
         hindernis(1,385,245);
         hindernis(2,323,187);
-        
+
         hindernis(1,261,245);
         hindernis(2,199,187);
-        
+
         hindernis(1,137,245);
-        
+
         hindernis(1,200,365);//3.Plattform
         hindernis(1,230,365);
         hindernis(1,260,365);
         hindernis(1,290,365);
-        
+
         //Nüsse
         nuss(16, 65);
         nuss(241,65);//1.Plattform
         nuss(448,42);
         nuss(350,350);
         nuss(20,137);//2.Plattform
-        
+
         flagge = new Flagge(550,326,3);
         addObject(flagge, 550, 326);
         addObject(new Flagge(), 550, 358);
     }
-    
+
     public void lvl3() //Milena
     {
         platform(5,0,100);//Startplatform
-        
+
         platform(2,224,131);
         platform(2,353,100);
         platform(2,482,131);
-        
+
         platform(4,497,242);//2. Plattform
-        
+
         bewegterHalberBoden(350,219,350,432,1);
-        
+
         platform(5,145,242);
         platform(1,49,242);
- 
+
         platform(3,450,340);
         platformE(3,450,370);
-        
+
         //Hindernisse
         hindernis(1,160,107); //1. Plattform    
-            halbePlatform(1,160,123);
+        halbePlatform(1,160,123);
         hindernis(1,192,123);
-            halbePlatform(1,192,139);
-        
+        halbePlatform(1,192,139);
+
         hindernis(1,289,123);
-            halbePlatform(1,289,139);
+        halbePlatform(1,289,139);
         hindernis(1,321,107);
-            halbePlatform(1,321,123);
-            
+        halbePlatform(1,321,123);
+
         hindernis(1,418,107);
-            halbePlatform(1,418,123);
+        halbePlatform(1,418,123);
         hindernis(1,450,123);
-            halbePlatform(1,450,139);
-            
-        
+        halbePlatform(1,450,139);
+
         hindernisPlatform(3,6,305,236); //2. Plattform
-            halbePlatform(6,  305,250);
-            
+        halbePlatform(6,  305,250);
+
         hindernisPlatform(3,2,81,236);
-            halbePlatform(2,  81,250);
-        
-            
+        halbePlatform(2,  81,250);
+
         bewegtesHindernis(1,210, 365,210,300,2);//3. Plattform
-        
         hindernis(1,419,365);
-        
         nuss(482,80);
         nuss(49,205);
         nuss(450,302);
-        
-        
+
         flagge = new Flagge(550, 326, 4);
         addObject(flagge, 550, 326);
         addObject(new Flagge(), 550, 358);
     }
-    
+
+    public void lvl4()
+    {
+        //E
+        nuss(34,100);
+        nuss(68,100);
+        nuss(100,100);
+        nuss(132,100);
+        nuss(164,100);
+
+        nuss(34,132);
+
+        nuss(34,164);
+
+        nuss(34,196);
+        nuss(68,196);
+        nuss(100,196);
+        nuss(132,196);
+
+        nuss(34,228);
+
+        nuss(34,260);
+
+        nuss(34,294);
+        nuss(68,294);
+        nuss(100,294);
+        nuss(132,294);
+        nuss(164,294);
+        //N
+        nuss(228,100);
+        nuss(228,132);
+        nuss(228,164);
+        nuss(228,196);
+        nuss(228,228);
+        nuss(228,260);
+        nuss(228,294);
+
+        nuss(260,164);
+
+        nuss(292,196);
+
+        nuss(324,228);
+
+        nuss(356,100);
+        nuss(356,132);
+        nuss(356,164);
+        nuss(356,196);
+        nuss(356,228);
+        nuss(356,260);
+        nuss(356,294);
+
+        //D
+        nuss(420,100);
+        nuss(420,132);
+        nuss(420,164);
+        nuss(420,196);
+        nuss(420,228);
+        nuss(420,260);
+        nuss(420,294);
+
+        nuss(452,100);
+        nuss(484,100);
+        nuss(516,132);
+        nuss(548,164);
+        nuss(548,196);
+        nuss(548,228);
+        nuss(516,260);
+        nuss(484,294);
+        nuss(452,294);
+    }
+
     /* Erstellt Nüsse für das Spiel
-    */
- 
+     */
+
     public void bewegterBoden(int x ,int y, int minX, int maxX, int speed) //Milena
- 
+
     {
         Boden boden = new Boden(minX,maxX,speed);
- 
+
         addObject(boden, x, y);
     }
-    
+
     /* Erstellt Nüsse für das Spiel
-    */
- 
+     */
+
     public void bewegterHalberBoden(int x ,int y, int minX, int maxX, int speed) //Milena
- 
+
     {
         Boden boden = new Boden(minX,maxX,speed);
         boden.setImage("Boden_halb.png");
         addObject(boden, x, y);
     }
-    
-    
+
     /* Erstellt Hindernisplattformen für das Spiel welche modelierbar sind.
      */
     public void hindernisPlatform(int ausrichtung,int platformlaenge, int platformstart ,int platformhoehe)//David, Selma und Milena
@@ -232,11 +298,11 @@ public class Level extends World
         for(int i = 0;i < platformlaenge; i++ )
         { 
             Hindernis hindernis= new Hindernis(ausrichtung);
-            
+
             addObject(hindernis, platformstart + 32*i, platformhoehe);
         }
     }
-    
+
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.
 
      */
@@ -270,7 +336,7 @@ public class Level extends World
             addObject(boden,  platformstart+ 32*i, platformhoehe);
         }
     }
-    
+
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.
      */
     public void platformE(int platformlaenge, int platformstart ,int platformhoehe)//David, Selma und Milena
@@ -282,7 +348,7 @@ public class Level extends World
             addObject(boden,platformstart+ 32*i, platformhoehe);
         }
     }
-    
+
     /* Erstellt Plattformen für das Spiel welche modelierbar sind.
 
      */
@@ -294,13 +360,12 @@ public class Level extends World
 
         addObject(hindernis, x, y);
     }
-    
+
     public void bewegtesHindernis(int ausrichtung, int x, int y, int minX, int maxX, int speed)//Milena
     {
         Hindernis hindernis = new Hindernis(ausrichtung, minX, maxX, speed);
         addObject(hindernis, x, y);
     }   
-
 
     /**
      * Prepare the world for the start of the program.

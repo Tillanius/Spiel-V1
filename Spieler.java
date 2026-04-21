@@ -27,6 +27,9 @@ public class Spieler extends OberklasseSpieler
 
     private int time = 0; //Zeitvariable für Sprungstopp zwischen den Sprüngen
     
+    private static int finalTode = 0;
+    private static int finalPunkte = 0;
+    private static int finalNuesse = 0;
     private static int finalTime = 0;
     
     private String tasteLinks = "a";
@@ -255,7 +258,11 @@ public class Spieler extends OberklasseSpieler
         Actor flagge = getOneIntersectingObject(Flagge.class);
         if(flagge != null)
         {
-            finalTime = finalTime + getCounterValue(4);
+            finalTode = finalTode + getCounterValue(0);
+            finalPunkte = finalPunkte + getCounterValue(1);
+            finalNuesse = finalNuesse + getCounterValue(2);
+            finalTime = finalTime + getCounterValue(3);
+            
             Level.flagge.change();
             Greenfoot.playSound("Flagge.mp3");
         }

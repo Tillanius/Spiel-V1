@@ -7,6 +7,4 @@ comment2.params=richtung
 comment2.target=Hindernis(int)
 comment3.params=richtung\ minX\ maxX\ speed
 comment3.target=Hindernis(int,\ int,\ int,\ int)
-comment4.params=
-comment4.target=void\ bewegen()
-numComments=5
+numComments=4

@@ -22,16 +22,17 @@ public class Musik3 //Jakob
     }
     
     public static void changeMusik(String musik)
+{
+    if(!musik.equals(musikCheck))
     {
-        if(musikON)
-        {
-            if(musik != musikCheck)
-            {
-                music.stop();
-                music = new GreenfootSound(musik);
-                musikCheck = musik;
-                music.playLoop();
-            }
-        }
+        music.stop();
+        music = new GreenfootSound(musik);
+        musikCheck = musik;
     }
+
+    if(musikON)
+    {
+        music.playLoop();
+    }
+}
 }

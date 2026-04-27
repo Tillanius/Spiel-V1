@@ -32,10 +32,10 @@ public class Spieler extends OberklasseSpieler
     private static int finalNuesse = 0;
     private static int finalTime = 0;
 
-    private String tasteLinks;
-    private String tasteRechts ;
-    private String tasteSprung;
-    private String tasteDash;
+    private String tasteLinks = "a";
+    private String tasteRechts = "d";
+    private String tasteSprung = "w";
+    private String tasteDash = "shift";
 
     //Countervariablen
     public Counter[] meineCounter = new Counter[4];
@@ -95,9 +95,9 @@ public class Spieler extends OberklasseSpieler
         muenzen = 0;
         nuesse = 0;
         String tasteLinks = "a";
-        String tasteRechts = "d";
-        String tasteSprung = "w";
-        String tasteDash = "shift";
+        tasteRechts = "d";
+        tasteSprung = "w";
+        tasteDash = "shift";
 
         setImage("Knight_flipped.png");
 

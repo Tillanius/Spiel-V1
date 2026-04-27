@@ -49,7 +49,10 @@ public class Hindernis extends Boden
     public Hindernis(int richtung, int minX, int maxX, int speed)//Milena
     {
         this(richtung); // nutzt den bestehenden Konstruktor
-        
+        this.minX = minX;
+        this.maxX = maxX;
+        this.speed = speed;
+        this.bewegt = true;
     }
  
    

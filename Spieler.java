@@ -32,10 +32,10 @@ public class Spieler extends OberklasseSpieler
     private static int finalNuesse = 0;
     private static int finalTime = 0;
 
-    private String tasteLinks = "a";
-    private String tasteRechts = "d";
-    private String tasteSprung = "w";
-    private String tasteDash = "shift";
+    private static String tasteLinks = "a";
+    private static String tasteRechts = "d";
+    private static String tasteSprung = "w";
+    private static String tasteDash = "shift";
 
     //Countervariablen
     public Counter[] meineCounter = new Counter[4];
@@ -94,10 +94,6 @@ public class Spieler extends OberklasseSpieler
         this.posY = posY;
         muenzen = 0;
         nuesse = 0;
-        String tasteLinks = "a";
-        tasteRechts = "d";
-        tasteSprung = "w";
-        tasteDash = "shift";
 
         setImage("Knight_flipped.png");
 
@@ -206,6 +202,18 @@ public class Spieler extends OberklasseSpieler
         return coolDownDone;
     }
 
+    public void tasteAendern(String taste, String neueTaste)
+    {
+        switch(taste)
+        {
+            case "links":       tasteRechts = neueTaste;    break;
+            case "rechts":      tasteLinks = neueTaste;     break;
+            case "springen":    tasteSprung = neueTaste;    break;
+            case "dash":        tasteDash = neueTaste;      break;
+        }
+    }
+    
+    
     //Counter
     public Counter getCounter(int i){
         return meineCounter[i];
